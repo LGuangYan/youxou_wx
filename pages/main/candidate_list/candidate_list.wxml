@@ -1,0 +1,134 @@
+<!--candidate_list.wxml-->
+<view class="page h100">
+  <view class="search">
+    <view class="weui-search-bar search-bar">
+      <view class="city-picker" wx:if="{{searchPageShowed}}">
+        <navigator url="/pages/main/city_search/city_search?param=city&value={{city}}&index={{cityIndex}}">
+          <button class="weui-btn mini-btn" type="default" size="mini">{{city}}</button>
+        </navigator>
+      </view>
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" confirm-type="搜索" bindconfirm="bindSearchTap" placeholder="搜索" bindtap="showInput" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!searchPageShowed}}" bindtap="bindSearchTap" wx:if="{{inputVal.length > 0}}">搜索</view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!searchPageShowed}}" bindtap="hideInput" wx:if="{{inputVal.length <= 0}}">取消</view>
+    </view>
+
+
+    <!-- 筛选选项 -->
+    <view class="filter-bar">
+      <view class="filter-item" data-filter="exp" bindtap="bindShowFilterPicker">
+        <view class="picker">
+          <view class="filter-item-text {{expIndex != 0 || activeName == 'exp' && filterPickerShow ? 'filter-active-option' : ''}}">
+            经验
+            <view class="arrow-down {{activeName == 'exp' && filterPickerShow? 'active':''}}"></view>
+          </view>
+
+        </view>
+      </view>
+      <view class="filter-item" data-filter="education" bindtap="bindShowFilterPicker">
+        <view class="picker">
+          <view class="filter-item-text {{educationIndex != 0 || activeName == 'education' && filterPickerShow ? 'filter-active-option' : ''}}">
+            学历
+            <view class="arrow-down {{activeName == 'education' && filterPickerShow? 'active':''}}"></view>
+          </view>
+        </view>
+      </view>
+      <view class="filter-item" data-filter="treatment" bindtap="bindShowFilterPicker">
+        <view class="picker">
+          <view class="filter-item-text {{treatmentIndex != 0 || activeName == 'treatment' && filterPickerShow ? 'filter-active-option' : ''}}">
+            薪资
+            <view class="arrow-down {{activeName == 'treatment' && filterPickerShow? 'active':''}}"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="filter-item" data-filter="sort" bindtap="bindShowFilterPicker">
+        <view class="picker">
+          <view class="filter-item-text {{sortIndex != 0 || activeName == 'sort' && filterPickerShow ? 'filter-active-option' : ''}}">
+            排序
+            <view class="arrow-down {{activeName == 'sort' && filterPickerShow? 'active':''}}"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells searchbar-result filter-picker" wx:if="{{filterPickerShow}}">
+        <view wx:for="{{activeList}}" wx:key="{{item.value}}" bindtap="bindFilterChose" data-value="{{item.value}}" class="weui-cell" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">
+            <view class="{{item.value == activeIndex ? 'filter-active-option' : ''}}">{{item.name}}</view>
+          </view>
+          <view wx:if="{{item.value == activeIndex}}" class="weui-cell__ft">
+            <image class="filter-radio" src="/assets/ui/radio.png"></image>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+
+
+  </view>
+
+  <!-- 搜索页 -->
+  <view class="search-page" wx:if="{{searchPageShowed}}">
+    <view class="hot-job-title">热招职位</view>
+    <view class="hot-job-list">
+      <view class="hot-job-item" wx:for="{{hotJobList}}" wx:key="{{index}}">
+        <button bindtap="hotJobTap" class="weui-btn mini-btn" data-job="{{item.name}}" type="default" size="mini">{{item.name}}</button>
+      </view>
+    </view>
+  </view>
+
+
+
+  <!-- 求职者列表 -->
+  <view class="page__bd list">
+    <scroll-view style="height: 100%;" class="candidate-list" bindscroll="scrollList" scroll-y bindscrolltolower="getList">
+      <navigator wx:for="{{candidateList}}" wx:key="index" wx:for-item="item" url="/pages/main/resume_detail/resume_detail?id={{item.resume_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg por">
+          <view class="list-avatar">
+            <image class="weui-media-box__thumb" src="{{item.header_url ? item.header_url : '/assets/default/头像.png'}}" />
+          </view>
+      <view class="list-sex" style="border-color:{{item.sex == '女'?'#ff69b1':'049aa9'}}">
+        <image wx:if="{{item.sex}}" src="/assets/sex/{{item.sex}}.png" mode="scaleToFill" />
+      </view>
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.name}}</view>
+          <view class="weui-media-box__desc list-tags">
+          <text class="list-tag">{{item.education}}</text>
+          <text class="list-tag">{{item.job_age}}年</text>
+          <text class="list-tag">{{item.area}}</text>
+          </view>
+          <view class="weui-media-box__desc list-intent-job">在找 {{item.intent_job}}</view>
+
+        </view>
+        <view class="weui-media-box__ft weui-media-box__ft_in-appmsg">
+          <view class="distance">{{item.distance}}
+          </view>
+          <view class="salary">
+          {{item.salary}}
+          </view>
+        </view>
+      </navigator>
+      <view wx:if="{{candidateList==0}}" class="tac mgt20 tips">
+        没有找到相关求职者
+      </view>
+      <view wx:if="{{loading}}" class="loading">玩命加载中</view>
+    </scroll-view>
+
+    <view class="modal" bindtap="bindModalTap" wx:if="{{filterPickerShow}}"></view>
+
+  </view>
+
+</view>

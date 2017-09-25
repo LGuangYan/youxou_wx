@@ -1,0 +1,41 @@
+<!--pages/form/identity/identity.wxml-->
+<view class="weui-cells__title">联系人身份</view>
+<view wx:if="{{buttonResult == '自定义'}}" class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__bd">
+      <input bindinput='identityInput' value="{{value}}" class="weui-input" placeholder="请输入您在公司的身份" />
+    </view>
+  </view>
+</view>
+<view class='button-list'>
+  <view class='button-list-row'>
+    <view class='button-list-item'>
+      <button size='mini' bindtap='buttonTap' data-val='老板' type='{{buttonResult == "老板" ? "deactive" : "default"}}'>老板</button>
+    </view>
+    <view class='button-list-item'>
+      <button  size='mini' bindtap='buttonTap' data-val='总监' type='{{buttonResult == "总监" ? "deactive" : "default"}}'>总监</button>
+    </view>
+    <view class='button-list-item'>
+      <button size='mini' bindtap='buttonTap' data-val='副总监' type='{{buttonResult == "副总监" ? "deactive" : "default"}}'>副总监</button>
+    </view>
+    <view class='button-list-item'>
+      <button size='mini' bindtap='buttonTap' data-val='总经理' type='{{buttonResult == "总经理" ? "deactive" : "default"}}'>总经理</button>
+    </view>
+  </view>
+  <view class='button-list-row'>
+    <view class='button-list-item'>
+      <button size='mini' bindtap='buttonTap' data-val='经理' type='{{buttonResult == "经理" ? "deactive" : "default"}}'>经理</button>
+    </view>
+    <view class='button-list-item'>
+      <button size='mini' bindtap='buttonTap' data-val='人事经理' type='{{buttonResult == "人事经理" ? "deactive" : "default"}}'>人事经理</button>
+    </view>
+    <view class='button-list-item'>
+      <button size='mini' bindtap='buttonTap' data-val='自定义' type='{{buttonResult == "自定义" ? "deactive" : "default"}}'>自定义</button>
+    </view>
+    <view class='button-list-item'>
+
+    </view>
+  </view>
+</view>
+
+<button type='primary' bindtap='submit' class='mgt20'>确定</button>

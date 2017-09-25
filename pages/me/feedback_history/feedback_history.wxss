@@ -1,0 +1,14 @@
+/* feedback_history.wxss */
+
+.bottom-button {
+  position: absolute;
+  bottom: 30rpx;
+  width: 100%;
+}
+
+.tips {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}

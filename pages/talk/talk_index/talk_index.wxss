@@ -1,0 +1,72 @@
+/* talk_index.wxss */
+
+.talk-top {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 20rpx;
+  background-color: #f8f8f8;
+}
+
+.talk-top .avatar {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.talk-top .top-item {
+  padding: 30rpx;
+  background-color: #fff;
+}
+
+.talk-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 200rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+.talk-item {
+  padding: 20rpx 30rpx;
+}
+
+
+
+.ft-box {
+  position: relative;
+  width: 120rpx;
+  height: 100rpx;
+}
+
+.ft-box .talk-time {
+  text-align: right;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.desc-view {
+  -webkit-line-clamp:1;
+}
+
+.ft-box .is-read {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 40rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  background-color: #8BC34A;
+  padding: 0 20rpx;
+  border-radius: 6rpx;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  overflow: hidden;
+}

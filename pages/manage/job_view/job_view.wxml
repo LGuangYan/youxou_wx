@@ -1,0 +1,47 @@
+<!--job_view.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{warn}}">{{warn}}</view>
+<view class="page">
+  <view class="company-image">
+    <image src="{{companyImage}}"></image>
+  </view>
+  <view class="info-hd">
+    <view class="name">{{info.job_name}}</view>
+    <view class="salary" wx:if="{{info.max_salary != 0}}">{{info.min_salary}}-{{info.max_salary}}</view>
+    <view class="salary" wx:if="{{info.max_salary == 0}}">面议</view>
+  </view>
+  <view class="info-bd">
+    <view class="base-info">
+      <view class="number">
+        <image src="/assets/ui/number_black.png"></image>
+        <text class="base-info-text">人数：{{info.number==0?'不限':info.number+'人'}}</text>
+      </view>
+      <view class="exp">
+        <image src="/assets/ui/time_black.png"></image>
+        <text class="base-info-text">经验：{{info.experience}}</text>
+      </view>
+      <view class="edu">
+        <image src="/assets/ui/edu_black.png"></image>
+        <text class="base-info-text">学历：{{info.education}}或以上</text>
+      </view>
+      <view class="address">
+        <image src="/assets/ui/gps_black.png"></image>
+        <text class="base-info-text">地址：{{info.address}}</text>
+      </view>
+    </view>
+    <view class="welfare">
+      <view class="welfare-title">福利待遇</view>
+      <view class="welfare-list clearfix">
+        <view wx:for="{{welfareList}}" wx:key="{{index}}" class="welfare-item">{{item}}</view>
+      </view>
+    </view>
+    <view class="intro">
+      <view class="intro-title">职位要求</view>
+      <view class="intro-content">
+        <view wx:for="{{introList}}" wx:key="{{index}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <navigator url="/pages/manage/job_detail/job_detail?id={{job_id}}" class="button-box" open-type="navigateTo">
+    <button type="primary">编辑</button>
+  </navigator>
+</view>

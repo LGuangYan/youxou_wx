@@ -1,0 +1,32 @@
+<!--checkbox.wxml-->
+<view class="weui-cells__title">{{name}}</view>
+
+<view class="weui-cells weui-cells_after-title">
+  <checkbox-group bindchange="checkboxChange">
+    <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="value">
+        <checkbox color="#FF9800" class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" color="#FF9800" type="success" size="23" wx:if="{{item.checked}}"></icon>
+        </view>
+        <view class="weui-cell__bd">{{item.name}}</view>
+    </label>
+  </checkbox-group>
+  <view class="weui-cell weui-cell_input" wx:if="{{showNewItem}}">
+    <view class="weui-cell__hd">
+      <icon class="weui-icon-checkbox_success" color="#FF9800" type="success" size="23"></icon>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" bindinput="newItemChange" placeholder="请输入自定义福利待遇标签" />
+    </view>
+    <view class="weui-cell__ft">
+      <button class="weui-btn mini-btn" type="primary" bindtap="addItemSubmit" size="mini">确定</button>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_link">
+    <view class="weui-cell__bd" bindtap="addItem">添加更多</view>
+  </view>
+</view>
+
+
+<button class="weui-btn" bindtap="submit" type="primary">提交</button>

@@ -1,0 +1,21 @@
+/* building.wxss */
+.page {
+  background-color: #fff;
+  height: 100%;
+  padding-top: 200rpx;
+  box-sizing: border-box;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo image {
+  height: 160rpx;
+  width: 160rpx;
+}
+
+.tips {
+  text-align: center;
+  color: #ff9800;
+}

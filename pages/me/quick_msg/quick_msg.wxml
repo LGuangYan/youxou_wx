@@ -1,0 +1,22 @@
+<!--quick_msg.wxml-->
+<view class="edit-page">
+  <view class="edit-tips">最多可以设置10条快捷回复</view>
+  <view wx:for="{{editingMessageList}}" wx:key="{{index}}" class="edit-message-item">
+    <view class="edit-message-text" style="padding-left:{{item.showDel ? 0 : '' }};padding-right:{{item.showDel ? '100rpx ' : '' }}">
+      <image bindtap="bindDelTap" data-idx="{{index}}" wx:if="{{!item.showDel}}" src="/assets/ui/del.png"></image>
+      <textarea bindinput="bindMessageInput" bindtap="hideDelButton" data-idx="{{index}}" auto-height type="text" value="{{item.text}}" />
+      <view catchtap="deleteMessage" data-idx="{{index}}" wx:if="{{item.showDel}}" class="delete-message-button">删除</view>
+    </view>
+  </view>
+  <view class="edit-message-item" hover-class="hover-bg">
+    <view bindtap="addNewMessage" wx:if="{{editingMessageList.length<10}}" class="edit-message-text add-new-message">
+      <image src="/assets/ui/new.png"></image>
+      添加新的快捷回复
+    </view>
+  </view>
+
+  <view class="submit-buttons">
+    <view data-type="submit" bindtap="editSubmit" class="button-item submit">完成</view>
+    <view data-type="cancel" bindtap="editSubmit" class="button-item cancel">取消</view>
+  </view>
+</view>

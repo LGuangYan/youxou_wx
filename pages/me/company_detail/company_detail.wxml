@@ -1,0 +1,91 @@
+<!--company_detail.wxml-->
+<view class="logo por">
+  <view class="avatar">
+    <image class="weui-uploader__img" src="{{logo}}" mode="aspectFill" />
+  </view>
+  <button class="weui-btn mini-btn avatar-button" bindtap="uploadLogo" type="primary" size="mini">点击更改LOGO</button>
+</view>
+<view class="weui-cells__title">基本信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <navigator url="/pages/edit/input/input?type=company&param=user_person&name=联系人姓名&value={{companyInfo.user_person}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">联系人姓名</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.user_person}}</view>
+  </navigator>
+  <navigator url="/pages/edit/input/input?inputType=&type=company&param=user_number&name=联系人电话&value={{companyInfo.user_number}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">联系人电话</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.user_number}}</view>
+  </navigator>
+  <!-- <navigator url="/pages/edit/input/input?type=company&param=identity&name=联系人身份&value={{companyInfo.identity}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">联系人身份</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.identity}}</view>
+  </navigator> -->
+  <navigator url="/pages/form/identity/identity?submitType=edit&type=company&param=identity&name=联系人身份&value={{companyInfo.identity}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">联系人身份</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.identity}}</view>
+  </navigator>
+  <navigator url="/pages/edit/input/input?type=company&param=business_name&name=公司名称&value={{companyInfo.business_name}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">公司名称</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.business_name}}</view>
+  </navigator>
+  <navigator url="/pages/edit/input/input?type=company&param=short_name&name=公司简称&value={{companyInfo.short_name}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">公司简称</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.short_name}}</view>
+  </navigator>
+  <navigator url="/pages/edit/multipicker/multipicker?value={{companyInfo.industry[0].name}}{{companyInfo.industry[1]? ','+companyInfo.industry[1].name:''}}{{companyInfo.industry[2]? ','+companyInfo.industry[2].name:''}}&type=company&param=industry&name=行业类型"
+    class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">行业类型</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">
+      {{companyInfo.industry[0].name}}{{companyInfo.industry[1]? ','+companyInfo.industry[1].name:''}}{{companyInfo.industry[2]? ','+companyInfo.industry[2].name:''}}
+    </view>
+  </navigator>
+  <navigator url="/pages/edit/radio/radio?type=company&param=scale&name=公司规模&value={{companyInfo.scale}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">公司规模</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.scale}}</view>
+  </navigator>
+  <navigator url="/pages/edit/checkbox/checkbox?type=company&param=welfare&name=公司福利&value={{companyInfo.welfare}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">公司福利</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.welfare}}</view>
+  </navigator>
+  <navigator url="/pages/edit/radio/radio?type=company&param=property&name=公司性质&value={{companyInfo.property}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">公司性质</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{companyInfo.property}}</view>
+  </navigator>
+  <navigator url="/pages/edit/address/address?type=company&param=address&value={{companyInfo.address}}&name=公司地址" class="weui-media-box weui-media-box_text" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class=" weui-cell__ft_in-access">
+      <view class="weui-media-box__title weui-media-box__title_in-text">公司地址</view>
+      <view class="weui-media-box__desc ">{{companyInfo.address}}</view>
+    </view>
+  </navigator>
+  <navigator url="/pages/edit/textarea/textarea?type=company&param=introduction&name=公司简介&value={{companyInfo.introduction}}" class="weui-media-box weui-media-box_text" open-type="navigateTo" hover-class="weui-cell_active">
+    <view class=" weui-cell__ft_in-access">
+      <view class="weui-media-box__title weui-media-box__title_in-text">公司简介</view>
+      <view class="weui-media-box__desc ">{{companyInfo.introduction}}</view>
+    </view>
+  </navigator>
+</view>
+
+<view class="weui-cells__title">图片</view>
+<view class="weui-cells" style='margin-top:0'>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{images}}" wx:for-index="idx" wx:key="index">
+              <view class="weui-uploader__file {{imagesProgress[idx] != 100 ? 'weui-uploader__file_status':''}}" data-idx="{{idx}}" bindlongtap="deleteImage" bindtap="previewImage" idx="{{idx}}" id="{{item.file_path}}">
+                <image class="weui-uploader__img" src="{{item.file_path}}" mode="aspectFill" />
+                <view wx:if="{{imagesProgress[idx] != 100}}" class="weui-uploader__file-content">{{imagesProgress[idx] || 0}}%</view>
+                <view wx:if="{{imagesProgress[idx] == -1}}" class="weui-uploader__file-content">
+                  <icon type="warn" size="23" color="#F43530"></icon>
+                </view>
+              </view>
+            </block>
+          </view>
+          <view wx:if="{{images.length<8}}" class="weui-uploader__input-box">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

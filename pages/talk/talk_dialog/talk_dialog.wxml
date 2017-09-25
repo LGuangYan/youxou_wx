@@ -1,0 +1,251 @@
+<!--talk_dialog.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{warn}}">{{warn}}</view>
+<navigator open-type="navigateTo" url="/pages/main/resume_detail/resume_detail?id={{baseInfo.resume_id}}" class="base-info">
+  <view class="info-left">
+    <view class="info-left-top">
+      <text class="resume-name">{{baseInfo.name}}</text>
+      <text class="invite-type">{{baseInfo.status}}</text>
+    </view>
+    <view class="info-left-middle">
+      <view class="info-item resume-sex">
+        <image src="/assets/ui/girl.png"></image>
+        {{baseInfo.sex}}
+      </view>
+      <view class="info-item resume-age">
+        <image src="/assets/ui/age.png"></image>
+        {{baseInfo.age}}岁
+      </view>
+      <view class="info-item resume-exp">
+        <image src="/assets/ui/time.png"></image>
+        {{baseInfo.job_age}}年
+      </view>
+    </view>
+    <view class="info-left-bottom">
+      <text>TA在找 {{baseInfo.intent_job}}</text>
+    </view>
+  </view>
+   <view class="info-right">
+    <view class="resume-salary">{{baseInfo.salary}}</view>
+    <view class="resume-distance">{{baseInfo.distance}}</view>
+  </view> 
+</navigator>
+
+
+<view class="invite-buttons">
+  <view class="buttom-item" bindtap="bindInviteTap" hover-class="hover-default">面试邀请</view>
+  <view class="buttom-item" bindtap="bindOfferTap" hover-class="hover-cancel">offer发放</view>
+</view>
+
+<!-- 控制页 -->
+<view wx:if="{{controlPageShowed}}" class="control-page">
+  <!-- 面试邀请 -->
+  <view class="invite-page" wx:if="{{controlType=='invite' }}">
+    <view wx:if="{{controlStep == 1}}" class="invite-step-one">
+      <image class="warn" src="/assets/ui/warn.png"></image>
+      <view class="tips">面试邀请后请于7天内处理面试状态</view>
+      <button bindtap="inviteStepTwo" type="primary">立即邀请面试</button>
+      <button bindtap="cancelControlPage" type="default">取消</button>
+    </view>
+    <!-- 面试邀请表单 -->
+    <view wx:if="{{controlStep==2}}" class="invite-step-two">
+      <form bindsubmit="inviteRequest" bindreset="cancelControlPage" >
+        <view class="weui-cells weui-cells_after-title mgb20">
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">联系人</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="contacts" value='{{firstContacts}}' class="weui-input" placeholder="请输入联系人"/>
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">电话</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="telephone" value='{{firstTelephone}}' class="weui-input" placeholder="请输入联系人电话" />
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">面试日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker name="date" mode="date" value="{{date}}" start="{{nowDate}}"  bindchange="bindDateChange">
+                      <view class="weui-input">{{date}}</view>
+                  </picker>
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">面试时间</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker name="time" mode="time" value="{{time}}" start="07:00" end="21:00" bindchange="bindTimeChange">
+                      <view class="weui-input">{{time}}</view>
+                  </picker>
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">面试地址</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="address" bindfocus="bindAddressChange" class="weui-input" value="{{address}}" placeholder="请输入面试地址" />
+              </view>
+          </view>
+        </view>
+        <button class="mgt40" formType="submit" type="primary">确定</button>
+        <button formType="reset" type="default">取消</button>
+      </form>
+    </view>
+  </view>
+  <!-- offer发放 -->
+  <view class="offer-page" wx:if="{{controlType=='offer' }}">
+
+    <view wx:if="{{controlStep == 1}}" class="offer-step-one">
+      <image class="warn" src="/assets/ui/warn.png"></image>
+      <view class="tips">面试通过后请于7天内处理OFFER状态</view>
+      <button bindtap="offerStepTwo" type="primary">发放offer</button>
+      <button bindtap="offerStepThree" type="default">面试未通过</button>
+    </view>
+
+    <!-- offer表单 -->
+    <view wx:if="{{controlStep==2}}" class="offer-step-two">
+      <form bindsubmit="offerRequest" bindreset="cancelControlPage" >
+        <view class="weui-cells weui-cells_after-title mgb20">
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">联系人</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="contacts" value='{{firstContacts}}'  class="weui-input" placeholder="请输入联系人"/>
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">电话</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="telephone" value='{{firstTelephone}}' class="weui-input" placeholder="请输入联系人电话" />
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">入职日期</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker name="date" mode="date" start="{{nowDate}}" value="{{date}}" bindchange="bindDateChange">
+                      <view class="weui-input">{{date}}</view>
+                  </picker>
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">入职时间</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker name="time" mode="time" value="{{time}}"  start="07:00" end="21:00" bindchange="bindTimeChange">
+                      <view class="weui-input">{{time}}</view>
+                  </picker>
+              </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">入职地点</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="address" bindfocus="bindAddressChange" class="weui-input" value="{{address}}" placeholder="请输入入职地址" />
+              </view>
+          </view>
+        </view>
+        <button class="mgt40" formType="submit" type="primary">确定</button>
+        <button formType="reset" type="default">取消</button>
+      </form>
+    </view>
+
+    <!-- 面试未通过表单 -->
+    <view wx:if="{{controlStep==3}}" class="offer-step-two">
+      <form bindsubmit="refuseRequest" bindreset="cancelControlPage" >
+        <view class="weui-cells weui-cells_after-title mgb20">
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">理由</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input name="remark" class="weui-input" placeholder="请输入面试未通过理由"/>
+              </view>
+          </view>
+        </view>
+        <button class="mgt40" formType="submit" type="primary">确定</button>
+        <button formType="reset" type="default">取消</button>
+      </form>
+    </view>
+
+  </view>
+</view>
+
+<!-- 聊天页 -->
+<scroll-view id="chatList" bindscroll="bindContentScroll" bindscrolltoupper="getOldChat" bindtap="bindContentScrollTap" scroll-y class="content" style="padding-bottom:{{quickMessageShowed?contentPaddingBottom:' '}}" scroll-into-view="{{mark}}">
+  <view class="message-list">
+    <view wx:for="{{chatList}}" id="{{'chat'+item.chat_id}}" wx:key="{{index}}" class="message-item message-item-{{item.send_role == 2 ? 'right':'left'}}">
+      <view class="message-avatar">
+        <!-- <image src="{{item.send_id == myId ? myAvatar : oppAvatar}}"></image> -->
+        <image mode='aspectFill' src="{{item.sender_header_url}}"></image>
+      </view>
+      <view class="message-content">
+        <text class="message-arrow"></text>
+        <text class="message-text">{{item.chat_content}}</text>
+        <view class="is-read" style="background-color:{{item.is_read == 1 ? '#8BC34A' : '#E51C23'}}">{{item.is_read == 1 ? '已读' : '未读'}}</view>
+      </view>
+      <view class="message-time">{{item.create_at}}</view>
+    </view>
+  </view>
+  <view class="bottom-mark-top"></view>
+  <view id="mark" class="bottom-mark"></view>
+</scroll-view>
+
+<!-- 输入框 -->
+<view class="bottom-box">
+  <view class="message-input">
+    <input cursor-spacing="10" type="text" confirm-type="发送" bindconfirm="sendMessage" confirm-hold="true" value="{{inputValue}}" />
+    <view class="quick-message" bindtap="showQuickMessage">
+      <image src="/assets/ui/{{quickMessageShowed ? 'keyboard' : 'add' }}.png"></image>
+    </view>
+  </view>
+
+  <view class="quick-content" style="display:{{quickMessageShowed ? 'block ' : 'none' }}">
+    <view wx:for="{{quickMessageList}}" data-text="{{item.text}}" bindtap="sendQuickMessage" wx:key="{{index}}" class="quick-message-item" hover-class="hover-bg">
+      <view class="quick-message-text">
+        {{item.text}}
+      </view>
+    </view>
+    <view class="quick-message-item" hover-class="hover-bg" bindtap="showMessageEditor">
+      <view class="edit-message">
+        <image src="/assets/ui/edit.png"></image>
+        编辑快捷回复
+      </view>
+    </view>
+  </view>
+</view>
+<view class="edit-page" wx:if="{{messageEditorShowed}}">
+  <view class="edit-tips">最多可以设置10条快捷回复</view>
+  <view wx:for="{{editingMessageList}}" wx:key="{{index}}" class="edit-message-item">
+    <view class="edit-message-text" style="padding-left:{{item.showDel ? 0 : '' }};padding-right:{{item.showDel ? '100rpx ' : '' }}">
+      <image bindtap="bindDelTap" data-idx="{{index}}" wx:if="{{!item.showDel}}" src="/assets/ui/del.png"></image>
+      <textarea bindinput="bindMessageInput" bindtap="hideDelButton" data-idx="{{index}}" auto-height type="text" value="{{item.text}}" />
+      <view catchtap="deleteMessage" data-idx="{{index}}" wx:if="{{item.showDel}}" class="delete-message-button">删除</view>
+    </view>
+  </view>
+  <view class="edit-message-item" hover-class="hover-bg">
+    <view bindtap="addNewMessage" wx:if="{{editingMessageList.length<10}}" class="edit-message-text add-new-message">
+      <image src="/assets/ui/new.png"></image>
+      添加新的快捷回复
+    </view>
+  </view>
+
+  <view class="submit-buttons">
+    <view data-type="submit" bindtap="editSubmit" class="button-item submit">完成</view>
+    <view data-type="cancel" bindtap="editSubmit" class="button-item cancel">取消</view>
+  </view>
+</view>

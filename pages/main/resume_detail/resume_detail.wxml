@@ -1,0 +1,152 @@
+<!--resume_detail.wxml-->
+<view class="page {{jobListShow ? 'hidden-page':''}}">
+  <view class="weui-toptips weui-toptips_warn"  wx:if="{{warn}}">{{warn}}</view>
+  <view class="info-header page__hd por">
+    <view class="avatar">
+      <view class="avatar-circle" bindtap='bindAvatarTap'>
+        <image src="{{info.resume.header_url}}" mode="aspectFill" />
+        <!-- <image src="{{info.resume.header_url ? info.resume.header_url : '/assets/default/头像.png'}}" mode="aspectFill" /> -->
+      </view>
+      <view class="avatar-sex" style="border-color:{{info.resume.sex == '女'?'#ff69b1':'049aa9'}}">
+        <image wx:if="{{info.resume.sex}}" src="/assets/sex/{{info.resume.sex}}.png" mode="scaleToFill" />
+      </view>
+    </view>
+    <!-- 姓名 -->
+    <view class="header-name">
+      {{info.resume.name}}
+    </view>
+    <!-- 基本信息 -->
+    <view class="header-base-info">
+      <view class="base-info-item">
+        <view class="base-info-icon">
+          <image src="/assets/ui/gps.png"></image>
+        </view>
+        <text>{{info.resume.address||'未知'}}</text>
+      </view>
+      <view class="base-info-item">
+        <view class="base-info-icon">
+          <image src="/assets/ui/email.png"></image>
+        </view>
+        <text>{{info.resume.job_age+'年'||'未知'}}</text>
+      </view>
+      <view class="base-info-item">
+        <view class="base-info-icon">
+          <image src="/assets/ui/edu.png"></image>
+        </view>
+        <text>{{info.resume.education||'未知'}}</text>
+      </view>
+      <view class="base-info-item">
+        <view class="base-info-icon">
+          <image src="/assets/ui/age.png"></image>
+        </view>
+        <text>{{info.resume.age+'岁'||'未知'}}</text>
+      </view>
+    </view>
+    <!-- 统计数据 -->
+    <view class="header-base-count">
+      <view class="base-count-item">
+        <view class="base-count-title">简历更新</view>
+        <view class="base-count-content">{{info.resume.last_time}}</view>
+      </view>
+      <view class="base-count-item">
+        <view class="base-count-title">累计投递</view>
+        <view class="base-count-content">{{info.resume.deliver_count}}</view>
+      </view>
+      <view class="base-count-item">
+        <view class="base-count-title">累计浏览</view>
+        <view class="base-count-content">{{info.resume.borwse_count}}</view>
+      </view>
+    </view>
+
+  </view>
+  <!-- 详细信息 -->
+  <view class="page__bd">
+    <!-- 自我总结 -->
+    <view class="resume-introduction">
+      <view class="job-status">{{info.resume.job_status}}</view>
+      <view class="introduction-content" style="height:{{introDetailShowed?'auto':''}}">
+        {{info.resume.self_desc||'暂未填写'}}
+      </view>
+      <view wx:if="{{!introDetailShowed}}" bindtap="toggleIntroDetail" class="tac introduction-down">
+        <image src="/assets/ui/down.png"></image>
+      </view>
+      <view wx:if="{{introDetailShowed}}" bindtap="toggleIntroDetail" class="tac introduction-up">
+        <image src="/assets/ui/up.png"></image>
+      </view>
+    </view>
+
+    <view class="weui-cells__title resume-cells__title">求职意向</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/gps_g.png" class="intent-icon"></image>
+          {{info.resume.intent_address||'未知'}}
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/peple_g.png" class="intent-icon"></image>
+          {{info.resume.intent_job||'未知'}}
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/salary_g.png" class="intent-icon"></image>
+          {{info.resume.intent_salary||'未知'}}
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title resume-cells__title">工作经验</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-panel__bd">
+        <view wx:if="{{!info.experience.length}}" class="exp-tips">暂未填写</view>
+        <view wx:for="{{info.experience}}" wx:key="{{index}}" class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">{{item.company_name}}</view>
+          <view class="weui-media-box__desc">
+            <view>
+              <text class="exp-title">职位名称 </text>
+              <text class="exp-content">{{item.job_name}}</text>
+            </view>
+            <view class="mgt10">
+              <text class="exp-title">任职时间 </text>
+              <text class="exp-content">{{item.start_time}} 至 {{item.end_time}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title resume-cells__title">教育经历</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-panel__bd">
+      <view wx:if="{{!info.education.length}}" class="edu-tips">暂未填写</view>
+        <view wx:for="{{info.education}}" wx:key="{{index}}" class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">{{item.school_name}}</view>
+          <view class="weui-media-box__desc">
+            <view>
+              <text class="exp-title">在校时间 </text>
+              <text class="exp-content">{{item.start_time}} 至 {{item.end_time}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="tac mgt20" style="color:red;font-size:14px;" wx:if="{{errorTips}}">{{errorTips}}</view>
+    <button bindtap="showJobList" class="weui-btn mgb20" type="primary">邀约面试</button>
+    <view class='global-bottom-box'></view>
+  </view>
+
+  <!-- 职位选择 -->
+  <scroll-view wx:if="{{jobListShow}}" class="job-list">
+    <view class="weui-cells__title">请选择职位</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view wx:for="{{jobList}}" wx:key="{{index}}" bindtap="bindInviteTap" data-jobid="{{item.job_id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{item.job_name}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+    <button type="default" class="mgt20" bindtap="hideJobList">返回</button>
+  </scroll-view>
+
+</view>

@@ -1,0 +1,57 @@
+<!--talk_index.wxml-->
+
+<view class="talk-top">
+  <navigator url="/pages/talk/doudou/doudou?theme_id={{doudou.theme_id}}" open-type="navigateTo" class="weui-media-box weui-media-box_appmsg top-item" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg avatar">
+      <image class="weui-media-box__thumb" src="/assets/logo/小助手头像.png" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">有豆小助手</view>
+      <view class="weui-media-box__desc">求职中遇到任何问题可以问我哟</view>
+      <view class="weui-media-box__desc">帮助&反馈</view>
+    </view>
+    <view class="weui-media-box__ft weui-media-box__ft_in-appmsg ft-box">
+      <view class="talk-time">
+        {{doudou.update_at}}
+      </view>
+    </view>
+  </navigator>
+</view>
+
+<scroll-view scroll-y class="talk-list">
+  <!-- <navigator wx:for="{{[1]}}" url="/pages/talk/talk_dialog/talk_dialog" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg avatar">
+      <image class="weui-media-box__thumb" src="/assets/default/头像.png" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">张三</view>
+      <view class="weui-media-box__desc">你好，我向你发送了一个...</view>
+    </view>
+    <view class="weui-media-box__ft weui-media-box__ft_in-appmsg ft-box">
+      <view class="talk-time">
+        4分钟前
+      </view>
+      <view class="is-read">
+        已读
+      </view>
+    </view>
+  </navigator> -->
+
+  <navigator wx:for="{{chatList}}" wx:key="{{index}}" url="/pages/talk/talk_dialog/talk_dialog?job_id={{item.job_id}}&uid={{item.user_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg avatar">
+      <image class="weui-media-box__thumb" src="{{item.header_url}}" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg bd-box">
+      <view class="weui-media-box__title">{{item.name}}</view>
+      <view class="weui-media-box__desc desc-view">{{item.chat_content}}</view>
+    </view>
+    <view class="weui-media-box__ft weui-media-box__ft_in-appmsg ft-box">
+      <view class="talk-time">
+        {{item.update_at}}
+      </view>
+      <view class="is-read" style="background-color:{{item.is_read == 1 ?'#8BC34A' : '#E51C23'}}">
+        {{item.is_read == 1 ? '已读' : '未读'}}
+      </view>
+    </view>
+  </navigator>
+</scroll-view>

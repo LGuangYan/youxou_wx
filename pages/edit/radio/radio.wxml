@@ -1,0 +1,23 @@
+<!--radio.wxml-->
+<view class="weui-cells__title">{{name}}</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <!-- <view class="weui-cell__hd">
+      <view class="weui-label">{{name}}</view>
+    </view> -->
+    <view class="weui-cell__bd">
+      <radio-group bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+                    <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+                    <view class="weui-cell__bd">{{item.name}}</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                        <icon color="#FF9800" class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                    </view>
+                </label>
+      </radio-group>
+    </view>
+  </view>
+</view>
+
+<button class="weui-btn mgb20" bindtap="submit" type="primary">提交</button>

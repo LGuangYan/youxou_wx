@@ -1,0 +1,11 @@
+/* address.wxss */
+
+.default-data {
+  padding: 15px;
+  font-size: 32rpx;
+}
+.tips {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+}

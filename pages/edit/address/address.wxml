@@ -1,0 +1,17 @@
+<!--address.wxml-->
+<view class="weui-cells__title">{{name}}</view>
+
+<button class="weui-btn mgb20" bindtap="chooseAddress" type="default">地图选址</button>
+<view class="default-data">原地址：{{value}}</view>
+<view class="tips"  wx:if="{{!hasChoosen}}">(更改地址请先在地图选择位置)</view>
+<!-- 经度：{{form[type].longitude}}<br /> 纬度：{{form[type].latitude}} -->
+<view wx:if="{{hasChoosen}}" class="weui-cells__tips">新地址</view>
+<view wx:if="{{form[type].address}}" class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea value="{{form[type].address}}" disabled="{{!hasChoosen}}" bindblur="handleChangeAddress" class="weui-textarea" placeholder="请输入公司地址" style="height: 3.3em" />
+    </view>
+  </view>
+</view>
+
+<button class="weui-btn" bindtap="submit" type="primary">提交</button>

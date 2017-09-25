@@ -1,0 +1,169 @@
+<!--create_job.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{warn.job_name || warn.number || warn.job_desc || warn.address || warn.category}}">{{warn.job_name || warn.number || warn.job_desc || warn.address || warn.category}}</view>
+
+    <view class="weui-cells__title">职位信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <!-- 职位名称 -->
+      <view class="weui-cell weui-cell_input {{warn.job_name ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">职位名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="jobNameInputBlur" class="weui-input" placeholder="请输入职位名称" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.job_name}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 岗位类型 -->
+      <view class="weui-cell weui-cell_select  {{warn.job_type ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">职位类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="jobTypeChange" value="{{jobTypeIndex}}" range="{{jobTypeList}}">
+            <view class="weui-select weui-select_in-select-after">{{jobTypeList[jobTypeIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <!-- 薪资福利 -->
+      <view class="weui-cell weui-cell_select  {{warn.treatment ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">薪　　资</view>
+        </view>
+        <view class="weui-cell__bd">
+          <!-- <picker bindchange="treatmentChange" value="{{treatmentIndex}}" range="{{treatmentList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{treatmentList[treatmentIndex].name}}</view>
+          </picker> -->
+          <input disabled="{{salaryChecked}}" type="number" bindinput="minSalaryInput" class="salary-input" type="text" /> - <input disabled="{{salaryChecked}}" type="number" bindinput="maxSalaryInput" class="salary-input" type="text" />
+          <text> (元)</text>
+          <view class="salary-checkbox" bindtap="chengeSalaryChecked">
+            <image src="{{salaryChecked ? '/assets/ui/radio.png' : '/assets/ui/radio_g.png'}}"></image>
+            <text style="color: {{salaryChecked ? '#FF9800' : '#666'}}">面议</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 职位类别 -->
+      <!-- <view class="weui-cell weui-cell_select  {{warn.category ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">职位类别</view>
+        </view>
+        <view class="weui-cell__bd">
+           <picker mode="multiSelector" bindcolumnchange="categoryColumnChange" bindchange="categoryChange" value="{{categoryIndex}}" range="{{categoryList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{categoryIndex[0] == 0 ? '请选择职位类别' : categoryName}}</view>
+          </picker> 
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">说明文字</view>
+      </view> -->
+      <navigator url="/pages/form/category/category" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <view class="weui-label">职位类别</view>
+        </view>
+        <view class="weui-cell__bd">{{categoryName}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+
+      <!-- 招聘人数 -->
+      <view class="weui-cell weui-cell_input {{warn.number ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">招聘人数</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="numberInputBlur" disabled='{{numberChecked}}' type="number" class="weui-input" placeholder="{{numberChecked?'不限':'请输入招聘人数'}}" />
+        </view>
+        <view class="weui-cell__ft">
+            <view class="salary-checkbox" bindtap="chengeNumberChecked" style='margin-right:80rpx;'>
+              <image src="{{numberChecked ? '/assets/ui/radio.png' : '/assets/ui/radio_g.png'}}"></image>
+              <text style="color: {{numberChecked ? '#FF9800' : '#666'}}">不限</text>
+            </view>
+          <icon wx:if="{{warn.number}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 性别要求 -->
+      <!-- <view class="weui-cell weui-cell_select  {{warn.sex ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">性别要求</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexList}}">
+            <view class="weui-select weui-select_in-select-after">{{sexList[sexIndex]}}</view>
+          </picker>
+        </view>
+      </view> -->
+
+      <!-- 学历要求 -->
+      <view class="weui-cell weui-cell_select  {{warn.education ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">学历要求</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="educationChange" value="{{educationIndex}}" range="{{educationList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{educationList[educationIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+
+
+
+      <!-- 工作经验 -->
+      <view class="weui-cell weui-cell_select  {{warn.experience ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">工作经验</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="experienceChange" value="{{experienceIndex}}" range="{{experienceList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{experienceList[experienceIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+
+
+
+      <view class="weui-media-box weui-media-box_text" bindtap="changeAddress" hover-class="weui-cell_active">
+        <view class=" weui-cell__ft_in-access">
+          <view class="weui-media-box__title weui-media-box__title_in-text">工作地址</view>
+          <view class="weui-media-box__desc ">{{form.address||'请选择工作地址'}}</view>
+        </view>
+      </view>
+
+      <!-- 岗位标签 -->
+      <!-- <view class="weui-cell weui-cell_input {{warn.job_label ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">岗位标签</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="jobLabelInputBlur" class="weui-input" placeholder="请输入岗位标签" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.job_label}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view> -->
+
+    </view>
+
+    <!-- 职位描述 -->
+    <view class="weui-cells__title">职位描述</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" bindinput="jobDescInputBlur" bindblur="jobDescInputBlur" placeholder="请输入职位描述" style="height: 3.3em" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.job_desc}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">注：不能填写电话、QQ、微信、微博等联系方式及特殊符号、性别歧视等内容。</view>
+
+    <view class="weui-btn-area">
+      <button class="weui-btn mgb20" type="primary" bindtap="submit">创建</button>
+    </view>
+    <view class='global-bottom-box'></view>
+  </view>
+</view>

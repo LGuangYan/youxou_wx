@@ -1,0 +1,50 @@
+<!--auth_legal.wxml-->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{warn}}">{{warn}}</view>
+<view class="weui-cells__title">法人身份证认证</view>
+<form bindsubmit="submit" class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">企业名称</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input name="enterprises" class="weui-input" placeholder="请输入企业名称" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">企业注册号</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input name="number" class="weui-input" placeholder="请输入企业注册号" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">法人姓名</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input  name="corporation" class="weui-input" placeholder="请输入法人姓名" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">法人身份证</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input   name="identity_card" class="weui-input" placeholder="请输入法人身份证" />
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access" bindtap="chooseCardPhoto" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">法人手持身份证头部照</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">
+      <image src="{{cardPhotoUrl ? cardPhotoUrl :'/assets/ui/legal1.jpeg'}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access" bindtap="chooseHalfPhoto" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">法人半身照</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">
+      <image src="{{halfPhotoUrl?halfPhotoUrl:'/assets/ui/legal2.jpeg'}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <button type="primary" formType="submit">认证</button>
+</form>

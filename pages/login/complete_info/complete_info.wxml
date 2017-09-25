@@ -1,0 +1,242 @@
+<!--complete_info.wxml-->
+<view class="page mgb20">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{topTips || warn.companyName || warn.industry.length || warn.property || warn.identity || warn.scale || warn.userPerson || warn.userNumber || warn.traffic || warn.introduction || warn.address}}">{{topTips || warn.companyName || warn.industry[0] || warn.industry[1] || warn.industry[2] || warn.property || warn.identity|| warn.scale || warn.userPerson || warn.userNumber || warn.traffic || warn.introduction || warn.address}}</view>
+  <!--页头-->
+  <!-- <view class="logo page__hd por">
+    <view class="avatar {{logoInfo.progress < 100 && logoInfo.progress > 0 ? 'weui-uploader__file_status' : ''}}">
+      <image class="weui-uploader__img" src="{{logoInfo.url}}" mode="aspectFill" />
+      <view wx:if="{{logoInfo.progress != 100 && logoInfo.progress != 0}}" class="weui-uploader__file-content">{{logoInfo.progress}}%</view>
+      <view wx:if="{{logoInfo.progress == -1}}" class="weui-uploader__file-content"></view>
+    </view>
+    <button class="weui-btn mini-btn avatar-button" bindtap="uploadLogo" type="primary" size="mini">点击上传LOGO</button>
+  </view> -->
+  <!--主体-->
+  <view class="page__bd page__bd_spacing">
+
+  <!-- 图片上传 -->
+  <view class="weui-cells__title">图片上传</view>
+    <view class="weui-cells" style='margin-top:0'>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{images}}" wx:for-index="idx" wx:key="*this">
+                  <view class="weui-uploader__file {{imagesProgress[idx] != 100 ? 'weui-uploader__file_status':''}}" data-idx="{{idx}}" bindlongtap="deleteImage" bindtap="previewImage" idx="{{idx}}" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    <view wx:if="{{imagesProgress[idx] != 100}}" class="weui-uploader__file-content">{{imagesProgress[idx] || 0}}%</view>
+                    <view wx:if="{{imagesProgress[idx] == -1}}" class="weui-uploader__file-content">
+                      <icon type="warn" size="23" color="#F43530"></icon>
+                    </view>
+                  </view>
+                </block>
+              </view>
+              <view wx:if="{{images.length<8}}" class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="weui-cells__title">基础信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <!-- 公司logo -->
+      <view class="weui-cell weui-cell_access"  bindtap="uploadLogo"  hover-class="weui-cell_active">
+          <view class="weui-cell__bd">公司LOGO</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">
+            <view class="avatar {{logoInfo.progress < 100 && logoInfo.progress > 0 ? 'weui-uploader__file_status' : ''}}">
+              <image class="weui-uploader__img" src="{{logoInfo.url||'/assets/default/图片.png'}}" mode="aspectFill" />
+              <view wx:if="{{logoInfo.progress != 100 && logoInfo.progress != 0}}" class="weui-uploader__file-content">{{logoInfo.progress}}%</view>
+              <view wx:if="{{logoInfo.progress == -1}}" class="weui-uploader__file-content"></view>
+            </view>
+          </view>
+      </view>
+
+      <!-- 联系人 -->
+      <view class="weui-cell weui-cell_input {{warn.userPerson ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="userPersonInputBlur" class="weui-input " placeholder="请输入联系人" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.userPerson}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+      <!-- 电话 -->
+      <view class="weui-cell weui-cell_input {{warn.userNumber ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input maxlength="20" value='{{tempPhone}}' bindblur="userNumberInputBlur" class="weui-input " placeholder="联系电话" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.userNumber}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+      <!-- 身份 -->
+      <!-- <view class="weui-cell weui-cell_input {{warn.identity ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系人身份</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindinput="identityInputBlur" class="weui-input " placeholder="请输入您在公司的身份" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.identity}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view> -->
+
+      <navigator url="/pages/form/identity/identity?submitType=form&type=company&param=identity&name=联系人身份&value={{form.identity}}" class="weui-cell weui-cell_access {{warn.identity ? 'weui-cell_warn' : ''}}" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">联系人身份</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{form.identity}}</view>
+      </navigator>
+
+    </view>
+
+
+    <view class="weui-cells__title">公司信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <!-- 公司名称 -->
+      <view class="weui-cell weui-cell_input {{warn.companyName ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公司名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="companyNameInputBlur" class="weui-input" placeholder="请输入公司名称" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.companyName}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 公司简称 -->
+      <view class="weui-cell weui-cell_input {{warn.companyShortName ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">公司简称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="companyShortNameInputBlur" class="weui-input" placeholder="请输入公司简称" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.companyShortName}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 性质 -->
+      <view class="weui-cell weui-cell_select  {{warn.property ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">性质</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="propertyInputChange" value="{{propertyIndex}}" range="{{propertyList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{propertyList[propertyIndex]['name']}}</view>
+          </picker>
+        </view>
+
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.property}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+      <!-- 规模 -->
+      <view class="weui-cell weui-cell_select {{warn.scale ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">规模</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="scaleInputChange" value="{{scaleIndex}}" range="{{scaleList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{scaleList[scaleIndex]['name']}}</view>
+          </picker>
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.scale}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+
+
+      <!-- 公司福利 -->
+      <navigator url="/pages/form/checkbox/checkbox?type=company&param=welfare&name=公司福利&value={{form.welfare}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">公司福利</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{form.welfare.length > 3 ? form.welfare[0]+','+form.welfare[1]+','+form.welfare[2]+',...' : form.welfare}}</view>
+      </navigator>
+
+      <view class="weui-cell weui-cell_access" bindtap="chooseAddress" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">公司地址</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{form.address}}</view>
+      </view>
+
+      <!-- 交通情况 -->
+      <view class="weui-cell weui-cell_input {{warn.traffic ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">交通情况</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindblur="trafficInputBlur" class="weui-input " placeholder="请输入交通情况" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.traffic}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <navigator url="/pages/form/textarea/textarea?type=company&param=introduction&name=公司简介&value={{form.introduction}}" class="weui-media-box weui-media-box_text  {{warn.traffic ? 'weui-cell_warn' : ''}}" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class=" weui-cell__ft_in-access">
+          <view class="weui-media-box__title weui-media-box__title_in-text">公司简介</view>
+          <view class="weui-media-box__desc ">{{form.introduction}}</view>
+        </view>
+      </navigator>    
+    </view>
+
+    <view class="page__bd page__bd_spacing">
+      <view class="weui-cells__title">行业类型</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view wx:for="{{industryIndex}}" wx:key="{{index}}" class="weui-cell  weui-cell_select  {{warn.industry[index] ? 'weui-cell_warn' : ''}}">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">{{industryTitle[index]}}</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="industryChange" disabled="{{pickerLock}}" bindlongtap="deleteIndustry" data-idx="{{index}}" value="{{industryIndex}}" range="{{industryList}}" range-key="name">
+              <view class="weui-select weui-select_in-select-after">{{industryList[industryIndex[index]].name}}</view>
+            </picker>
+          </view>
+
+        </view>
+        <view class="weui-cell weui-cell_link" wx:if="{{industryIndex.length < 3}}">
+          <view class="weui-cell__bd" bindtap="addIndustry">添加行业</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class="weui-cells__title">公司简介</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" bindinput="introductionInputBlur" bindblur="introductionInputBlur" placeholder="请输入公司简介" style="height: 3.3em" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.introduction}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+    </view> -->
+    <!-- <view class="weui-cells__title">公司地址</view> -->
+
+    <!-- <button class="weui-btn mgb20" bindtap="chooseAddress" type="primary">地图选址</button>
+    <view wx:if="{{form.address}}" class="weui-cells__tips">经度：{{form.longitude}}<br /> 纬度：{{form.latitude}}</view>
+    <view wx:if="{{form.address}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea value="{{form.address}}" bindblur="handleChangeAddress" class="weui-textarea" placeholder="请输入公司地址" style="height: 3.3em" />
+        </view>
+      </view>
+    </view> -->
+
+    
+    <button class="mgb20 weui-btn" bindtap="submit" type="primary">提交</button>
+  </view>
+  <view class='global-bottom-box'></view>
+</view>

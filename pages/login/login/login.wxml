@@ -1,0 +1,38 @@
+<!--login.wxml-->
+<view class="page">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{topTips || warn.phone || warn.password }}">{{topTips || warn.phoneText || warn.passwordText }}</view>
+
+  <!--页头-->
+  <view class="logo page__hd">
+    <image src='/assets/logo/150.png'></image>
+  </view>
+  <!--主体-->
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells__title">登陆</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">账号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="phone" bindblur="phoneInputBlur" class="weui-input" placeholder="请输入手机号" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">密码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="password" bindblur="passwordInputBlur" class="weui-input abc" type="password" placeholder="密码" />
+          </view>
+        </view>
+      </view>
+
+      <view class="more clearfix">
+        <text bindtap="bindQuickLoginTap" class="mgl20 fl">手机登陆</text>
+        <text bindtap="bindResetPasswordTap" class="mgr20 fr">找回密码</text>
+      </view>
+      <button class="weui-btn" bindtap="submit" type="primary">提交</button>
+      <button class="weui-btn" bindtap="bindRegisterTap" type="default">注册</button>
+  </view>
+</view>

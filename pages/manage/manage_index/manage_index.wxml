@@ -1,0 +1,105 @@
+<!--manage_index.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar bggrey">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="width:{{sliderWidth}}px; left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content job-list" hidden="{{activeIndex != 0}}">
+          <navigator class="job-list-button" url="/pages/manage/create_job/create_job"open-type="navigateTo">
+            <button class="weui-btn" type="primary">发布职位</button>
+          </navigator>
+
+          <!-- <view class="job-list-container" style="height:100%"> -->
+            <!-- <view class="weui-cells__title job-list-title">职位列表</view> -->
+            <scroll-view scroll-y style="height:100%"  bindscrolltolower="getJobList" class="weui-cells weui-cells_after-title">
+               <navigator class="job-list-button" url="/pages/manage/job_view/job_view?id={{item.job_id}}" open-type="navigateTo" wx:for="{{jobList}}" wx:key="{{index}}" class="weui-cell" hover-class="weui-cell_active"> 
+               <!-- <navigator url="/pages/manage/job_detail/job_detail?id={{item.id}}" open-type="navigateTo" wx:for="{{jobList}}" wx:key="{{index}}" class="weui-cell" hover-class="weui-cell_active">  -->
+                <view class="weui-cell__hd job-hd">
+                  <view class="deliver">
+                    <view class="deliver-count">
+                      {{item.deliver}}
+                    </view>
+                    <view class="deliver-text">投递简历</view>
+                  </view>
+
+                </view>
+                <view class="weui-cell__bd">
+                  <view style="font-size: 14px">{{item.job_name}}</view>
+                  <view style="font-size: 12px; display:inline-block; color: #fff;background-color:{{item.status == 1 ? '#FF9800':'#E51C23'}};padding:0 10rpx;">{{item.status == 1 ? '上架已显示':'下架不显示'}}</view>
+                  <view style="font-size: 12px;color: #888888;margin-top:6rpx">{{item.job_type}}　浏览{{item.job_browse}}</view>
+                  
+                </view>
+                <view class="weui-cell__ft job-buttons">
+                  <!-- <button type="default" data-jobid="{{item.id}}" size="tini" catchtap="moveToTop">置顶</button> -->
+                   <button type="default" data-jobid="{{item.job_id}}" data-status="{{item.status}}" size="tini" catchtap="changeJobStatus">{{item.status == 1 ? '下架':'上架'}}</button> 
+                   <button type="default" data-jobid="{{item.job_id}}" size="tini" catchtap="shareJob">分享</button> 
+                </view>
+              </navigator>
+            </scroll-view>
+          <!-- </view> -->
+
+        </view>
+        <view class="weui-tab__content candidate-list" hidden="{{activeIndex != 1}}">
+          <view class="filter-bar" style="top:51px">
+            <view class="filter-item {{candidateStatus == 1 ? 'actived' : ''}}" bindtap="candidateFilterChange" data-status="1" range="{{sortList}}">
+              <view class="picker">
+                <view class="filter-item-text">投递</view>
+              </view>
+            </view>
+            <view class="filter-item {{candidateStatus == 2 ? 'actived' : ''}}" bindtap="candidateFilterChange" data-status="2" range="{{sexList}}">
+              <view class="picker">
+                <view class="filter-item-text">邀约</view>
+              </view>
+            </view>
+            <view class="filter-item {{candidateStatus == 3 ? 'actived' : ''}}" bindtap="candidateFilterChange" data-status="3" range="{{expList}}">
+              <view class="picker">
+                <view class="filter-item-text">面试</view>
+              </view>
+            </view>
+            <view class="filter-item {{candidateStatus == 4 ? 'actived' : ''}}" bindtap="candidateFilterChange" data-status="4" range="{{expList}}">
+              <view class="picker">
+                <view class="filter-item-text">offer</view>
+              </view>
+            </view>
+          </view>
+          <scroll-view style="height: 100%;" scroll-y bindscrolltolower="getCandidateList">
+            <navigator wx:for="{{candidateList}}" wx:key="index" wx:for-item="item" url="/pages/talk/talk_dialog/talk_dialog?job_id={{item.business_job_id}}&uid={{item.user_id}}" class="weui-media-box weui-media-box_appmsg candidate-item" hover-class="weui-cell_active">
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg avatar">
+                <image class="weui-media-box__thumb" src="{{item.header_url ? item.header_url : '/assets/default/头像.png'}}" />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg candidate-bd" >
+                <view class="weui-media-box__title">{{item.name}}</view>
+                <view class="weui-media-box__desc">
+                  <text>{{item.age}}岁</text>
+                  <text>{{item.job_age}}年</text>
+                  <text>{{item.area}}</text>
+                </view>
+                <view class="weui-media-box__desc mgt10">在找 {{item.intent_job}}</view>
+
+              </view>
+              <view class="weui-media-box__ft weui-media-box__ft_in-appmsg candidate-ft">
+                <!-- <view class="is-read">{{item.is_read==1? '已读':'未读'}}</view> -->
+                <view></view>
+                <view class="tag-list">
+                  <view wx:for="{{item.tag}}" wx:for-item="tag" style="background-color:{{tag.color}}" wx:key="{{tag.tag}}" class="tag-item">{{tag.text}}</view>
+                </view>
+                <view class="salary">{{item.intent_salary}}</view>
+              </view>
+            </navigator>
+            <view wx:if="{{candidateList==0}}" class="tac mgt20 tips">
+              没有找到相关求职者
+            </view>
+            <!-- <view wx:if="{{candidateLoading}}" class="loading">玩命加载中</view> -->
+          </scroll-view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

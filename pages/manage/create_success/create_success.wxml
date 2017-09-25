@@ -1,0 +1,20 @@
+<!--create_success.wxml-->
+<view class="page">
+  <view class="weui-msg">
+    <view class="weui-msg__icon-area">
+      <icon color="#259b24" type="success" size="93"></icon>
+    </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">职位发布成功</view>
+      <view class="weui-msg__desc">在{{area}}约有{{count}}份简历符合您的职位要求</view>
+    </view>
+    <view class="weui-msg__opr-area">
+      <view class="weui-btn-area">
+        <button bindtap="lookonelook" class="weui-btn" type="primary">查看符合的简历</button>
+
+        <button class="weui-btn" bindtap="bindCancelTap" type="default">取消</button>
+      </view>
+    </view>
+
+  </view>
+</view>

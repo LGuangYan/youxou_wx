@@ -1,0 +1,7 @@
+<!--building.wxml-->
+<view class="page">
+  <view class="logo">
+    <image src="/assets/logo/logo.png"></image>
+  </view>
+  <view class="tips">该功能正在完善中</view>
+</view>

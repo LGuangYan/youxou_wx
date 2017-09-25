@@ -1,0 +1,11 @@
+<!--auth_licence.wxml-->
+<view class="page">
+  <view class="exp">
+    <image mode="widthFix" src="/assets/ui/licence.jpeg"></image>
+  </view>
+  <button bindtap="chooseLicence" type="primary">上传营业执照</button>
+  <view class="tips">
+    <view class="tips-title">营业执照上传规则</view>
+    <view class="tips-content">建议提供清晰的执照原件数码照，同时请核对匹配信息是否正确。</view>
+  </view>
+</view>

@@ -1,0 +1,89 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/login/quick_login/quick_login",
+    "pages/login/register/register",
+    "pages/login/reset_password/reset_password",
+    "pages/login/login/login",
+    "pages/main/candidate_list/candidate_list",
+    "pages/login/clause/clause",
+    "pages/login/complete_info/complete_info",
+    "pages/login/map/map",
+    "pages/msg/msg_fail/msg_fail",
+    "pages/msg/msg_success/msg_success",
+    "pages/manage/manage_index/manage_index",
+    "pages/me/about_me/about_me",
+    "pages/talk/talk_index/talk_index",
+    "pages/me/company_detail/company_detail",
+    "pages/manage/create_job/create_job",
+    "pages/manage/job_detail/job_detail",
+    "pages/edit/input/input",
+    "pages/edit/checkbox/checkbox",
+    "pages/edit/radio/radio",
+    "pages/edit/textarea/textarea",
+    "pages/edit/multipicker/multipicker",
+    "pages/edit/address/address",
+    "pages/main/resume_detail/resume_detail",
+    "pages/form/checkbox/checkbox",
+    "pages/main/city_search/city_search",
+    "pages/talk/talk_dialog/talk_dialog",
+    "pages/edit/salary/salary",
+    "pages/manage/job_view/job_view",
+    "pages/manage/create_success/create_success",
+    "pages/me/option/option",
+    "pages/me/feedback/feedback",
+    "pages/me/quick_msg/quick_msg",
+    "pages/me/feedback_history/feedback_history",
+    "pages/me/feedback_form/feedback_form",
+    "pages/me/remind/remind",
+    "pages/edit/category/category",
+    "pages/form/category/category",
+    "pages/me/feedback_detail/feedback_detail",
+    "pages/talk/doudou/doudou",
+    "pages/me/auth/auth",
+    "pages/me/about_youdou/about_youdou",
+    "pages/msg/building/building",
+    "pages/me/auth_licence/auth_licence",
+    "pages/me/auth_legal/auth_legal",
+    "pages/me/article/article",
+    "pages/form/textarea/textarea",
+    "pages/form/identity/identity"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "有豆-企业版",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "iconPath": "assets/tabaricon/附近_.png",
+        "selectedIconPath": "assets/tabaricon/附近.png",
+        "pagePath": "pages/main/candidate_list/candidate_list",
+        "text": "附近"
+      },
+      {
+        "iconPath": "assets/tabaricon/消息_.png",
+        "selectedIconPath": "assets/tabaricon/消息.png",
+        "pagePath": "pages/talk/talk_index/talk_index",
+        "text": "消息"
+      },
+      {
+        "iconPath": "assets/tabaricon/管理_.png",
+        "selectedIconPath": "assets/tabaricon/管理.png",
+        "pagePath": "pages/manage/manage_index/manage_index",
+        "text": "管理"
+      },
+      {
+        "iconPath": "assets/tabaricon/我_.png",
+        "selectedIconPath": "assets/tabaricon/我.png",
+        "pagePath": "pages/me/about_me/about_me",
+        "text": "我"
+      }
+    ]
+  }
+}

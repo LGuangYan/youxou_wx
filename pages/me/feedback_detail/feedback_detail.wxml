@@ -1,0 +1,53 @@
+<!--feedback_detail.wxml-->
+<!-- 聊天页 -->
+<scroll-view bindscroll="bindContentScroll" bindscrolltoupper="getOldChat" bindtap="bindContentScrollTap" scroll-y class="content" style="padding-bottom:{{quickMessageShowed?contentPaddingBottom:' '}}" scroll-into-view="{{mark}}">
+  <view class="message-list">
+
+
+    <view class="message-item message-item-right">
+      <view class="message-avatar">
+        <image src="/assets/default/头像.png"></image>
+      </view>
+      <view class="message-content">
+        <text class="message-arrow"></text>
+        <text class="message-text">{{info.content}}</text>
+      </view>
+      <view class="message-time">{{info.feedbackTime}}</view>
+    </view>
+
+    <view class="message-item message-item-right" wx:if="{{info.feedbackImg.length}}">
+      <view class="message-avatar">
+        <image src="/assets/default/头像.png"></image>
+      </view>
+      <view class="message-content">
+        <text class="message-arrow"></text>
+        <view class="message-text" style="width: 260rpx">
+          <image bindtap="showImage" data-idx="{{index}}" wx:for="{{info.feedbackImg}}" mode="widthFix" src="{{item.filePath}}" wx:key="{{index}}"></image>
+        </view>
+      </view>
+      <view class="message-time">{{info.feedbackTime}}</view>
+    </view>
+
+    <view class="message-item message-item-left">
+      <view class="message-avatar">
+        <image src="/assets/logo/小助手头像.png"></image>
+      </view>
+      <view class="message-content">
+        <text class="message-arrow"></text>
+        <text class="message-text">您的反馈我们已经收到</text>
+        <!-- <view class="is-read" style="background-color:{{item == 1 ? '#8BC34A' : '#E51C23'}}">{{item == 1 ? '已读' : '未读'}}</view> -->
+      </view>
+      <!-- <view class="message-time">8月15日 14：53</view> -->
+    </view>
+  </view>
+  <view id="mark" class="bottom-mark"></view>
+</scroll-view>
+
+<view class="bottom-box">
+  <view class="is-deal">
+    {{info.isDeal}}
+  </view>
+  <!-- <view class="message-input">
+     <input cursor-spacing="10" type="text" /> 
+  </view> -->
+</view>

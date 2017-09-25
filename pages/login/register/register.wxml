@@ -1,0 +1,75 @@
+<!--register.wxml-->
+<view class="page">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{topTips||warn.phone || warn.code || warn.password || warn.checkPass}}">{{topTips || warn.phoneText || warn.codeText || warn.passwordText || warn.checkPassText}}</view>
+  <view class="logo page__hd">
+    <image src='/assets/logo/150.png'></image>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-cells__title">注册</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input weui-cell_vcode  {{warn.phone ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">手机号</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="number" bindblur="phoneInputBlur" placeholder="请输入手机号" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.phone}}" bindtap="getErrorInfo" data-warn="phone" type="warn" size="23" color="#E64340"></icon>
+          <view bindtap="getCode" class="weui-vcode-btn  {{canGetCode ? '' : 'cannot-getcode'}}">{{getCodeMessage}}</view>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input {{warn.code ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">验证码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" bindblur="codeInputBlur" placeholder="请输入验证码" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.code}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#ff9800"></icon>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input {{warn.password ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">密码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input id="password" class="weui-input abc" bindblur="passwordInputBlur" type="password" maxlength="16" placeholder="密码长度8-16位" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.password}}" bindtap="getErrorInfo" data-warn="password" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input {{warn.checkPass ? 'weui-cell_warn' : ''}}">
+        <view class="weui-cell__hd">
+          <view id="checkpass" class="weui-label">重复密码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input abc" bindblur="checkPassInputBlur" type="password" placeholder="再输一次密码" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{warn.checkPass}}" bindtap="getErrorInfo" data-warn="checkPass" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+    </view>
+    <checkbox-group bindchange="clauseChange">
+      <label class="weui-agree" for="weuiAgree">
+        <view class="weui-agree__text">
+          <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{clauseAgree}}" />
+          <view class="weui-agree__checkbox-icon">
+            <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" color="#ff9800" size="9" wx:if="{{clauseAgree}}"></icon>
+          </view>
+          阅读并同意
+          <navigator url="/pages/login/clause/clause" open-type="navigate" class="weui-agree__link">《相关条款》</navigator>
+        </view>
+      </label>
+    </checkbox-group>
+    <button class="weui-btn" bindtap="submit" type="primary">注册</button>
+
+  </view>
+</view>

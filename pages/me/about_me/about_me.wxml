@@ -1,0 +1,181 @@
+<!--about_me.wxml-->
+<!-- <view class="page">
+
+  
+
+
+<view class="page__hd">
+    </view> -->
+
+<!-- <view class="page__bd">
+        <navigator open-type="navigateTo"  url="../company_detail/company_detail">
+        <view class="weui-cells weui-cells_after-title about-me weui-cell_access">
+            <view class="weui-cell">
+                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <image src="{{avatar}}" style="width: 50px; height: 50px; display: block"/>
+                     <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</view> 
+                </view>
+                <view class="weui-cell__bd">
+                    <view>{{nickName}}</view>
+                    <view style="font-size: 13px;color: #888888;">{{companyName}}</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            
+        </view>
+        </navigator>
+
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle">认证</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle">教程攻略</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">查看详情</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle">我的微招聘</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">
+                    <view style="display: inline-block; vertical-align: middle">推广服务</view>
+                    <view class="weui-badge" style="margin-left: 5px;">New</view>
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+</view>  -->
+
+
+<view class="page">
+  <view class="me-hd" style="background-color:{{infoShowed? 'transparent':''}}">
+    <view class="hd-bgbox">
+      <image mode='aspectFill' class="bg-img" src="{{bgImage}}"></image>
+      <view bindtap='bindAvatarTap' class="avatar">
+        <image mode='aspectFill' src="{{avatar ? avatar : '/assets/default/头像.png'}}"></image>
+      </view>
+      <view class="company-name">{{companyName}}</view>
+      <view class="option" bindtap="showOption">
+        <image src="/assets/ui/option_w.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="me-bd">
+
+    <!-- 关于我 -->
+
+    <view wx:if="{{!infoShowed}}" class="index">
+      <view class="button-list">
+        <view class="button-item" bindtap="showCompanyInfo">
+          <image src="/assets/ui/home.png"></image>
+          <view class="home-text">主页</view>
+        </view>
+        <navigator open-type="navigateTo" url="/pages/me/auth/auth" class="button-item">
+          <image src="/assets/ui/auth.png"></image>
+          <view class="auth-text">认证</view>
+        </navigator>
+        <navigator open-type="navigateTo" url="/pages/msg/building/building"  class="button-item">
+          <image src="/assets/ui/promotion.png"></image>
+          <view class="promotion-text">推广</view>
+        </navigator>
+      </view>
+
+      <view class="cells-list" wx:if="{{!infoShowed}}">
+        <view class="weui-cells weui-cells_after-title">
+          <!-- <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__hd">
+              <image src="/assets/ui/msg_g.png" style="margin-right: 10px;vertical-align: middle;width:15px; height: 15px;"></image>
+            </view>
+            <view class="weui-cell__bd">
+              <view style="display: inline-block; vertical-align: middle">公司动态</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view> -->
+          <navigator url="/pages/me/feedback/feedback" open-type="navigateTo" class="weui-cell weui-cell_access">
+            <view class="weui-cell__hd">
+              <image src="/assets/ui/course_g.png" style="margin-right: 10px;vertical-align: middle;width:15px; height: 15px;"></image>
+            </view>
+            <view class="weui-cell__bd">
+              <view style="display: inline-block; vertical-align: middle">帮助与反馈</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <navigator  url="/pages/me/company_detail/company_detail" open-type="navigateTo" class="weui-cell weui-cell_access">
+            <view class="weui-cell__hd">
+              <image src="/assets/ui/recruit_g.png" style="margin-right: 10px;vertical-align: middle;width:15px; height: 15px;"></image>
+            </view>
+            <view class="weui-cell__bd">
+              <view style="display: inline-block; vertical-align: middle">资料编辑</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+          <view class="weui-cell weui-cell_access"  bindtap="showOption" >
+            <view class="weui-cell__hd">
+              <image src="/assets/ui/recruit_g.png" style="margin-right: 10px;vertical-align: middle;width:15px; height: 15px;"></image>
+            </view>
+            <view class="weui-cell__bd">
+              <view style="display: inline-block; vertical-align: middle">设置</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view style="display: inline-block; vertical-align: middle"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 公司主页 -->
+
+    <view class="company-info" wx:if="{{infoShowed}}">
+      <view class="info-address info-item">
+        <view class="info-icon">
+          <image src="/assets/ui/gps_g.png"></image>
+        </view>
+        <view class="info-content">
+          <view class="info-text">{{info.address}}</view>
+        </view>
+      </view>
+      <view class="info-welfare info-item">
+        <view class="info-icon">
+          <image src="/assets/ui/welfare_g.png"></image>
+        </view>
+        <view class="info-content">
+          <view class="info-text">
+            <view wx:for="{{info.welfare}}" wx:key="{{index}}" class="welfare-item">{{item}}</view>
+          </view>
+
+        </view>
+      </view>
+      <view class="info-intro  info-item">
+        <view class="info-icon">
+          <image src="/assets/ui/intro_g.png"></image>
+        </view>
+        <view class="info-content">
+          <view class="info-text" style='line-height:60rpx;padding-top:20rpx;'>{{info.introduction}}</view>
+        </view>
+      </view>
+      <view class="info-image clearfix">
+        <view wx:for="{{info.businfo_img}}" data-idx="{{index}}" bindtap="showBigImage" wx:key="{{index}}" class="info-image-item" style="background-image:url({{item.file_path}});"></view>
+      </view>
+      <navigator open-type="navigateTo" url="/pages/me/company_detail/company_detail">
+        <button type="primary" class="mgt20">编辑</button>
+      </navigator>
+      <button type="default" class="mgt20" bindtap="showCompanyInfo">返回</button>
+      <view class='global-bottom-box'></view>
+    </view>
+
+  </view>
+</view>

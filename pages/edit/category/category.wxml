@@ -1,0 +1,21 @@
+<!--category.wxml-->
+<view class='page'>
+  <scroll-view scroll-y class="weui-cells category-cells">
+    <view wx:for="{{categoryList[0]}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="tapFirstItem" class="weui-cell weui-cell_access {{categoryIndex[0]==index?'active':''}}">
+      <view class="weui-cell__bd">{{item.name}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view class="weui-cell">
+    </view>
+  </scroll-view>
+  <view class="mask" wx:if="{{asideShow}}" bindtap="hideMask"></view>
+
+  <view class="aside" style="{{asideShow ? '' : 'right:-800rpx'}}">
+    <scroll-view scroll-y class="aside-left ">
+      <view bindtap="tapSecondItem" class="aside-item {{categoryIndex[1]==index? 'active': ''}}" wx:for="{{categoryList[1]}}" wx:key="{{index}}" data-idx="{{index}}">{{item.name}}</view>
+    </scroll-view>
+    <scroll-view scroll-y class="aside-right ">
+      <view bindtap="tapThirdItem" class="aside-item" wx:for="{{categoryList[2]}}" wx:key="{{index}}" data-idx="{{index}}">{{item.name}}</view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+/* salary.wxss */
+.salary-cells {
+  padding-top: 60rpx;
+  box-sizing: border-box;
+}
+
+.salary-checkbox {
+  display: inline-block;
+  height: 44px;
+  margin-left: 30rpx;
+  line-height: 44px;
+}
+
+.salary-checkbox image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom: -1px;
+  margin-right: 10rpx;
+}
+
+.salary-input {
+  display: inline-block;
+  width: 100rpx;
+  vertical-align: middle;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  
+}
+
+.salary-input[disabled] {
+  background-color: #dedede;
+}

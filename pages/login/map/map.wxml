@@ -1,0 +1,3 @@
+<!--map.wxml-->
+<map id="myMap" show-location  />
+

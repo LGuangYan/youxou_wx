@@ -1,0 +1,25 @@
+/* pages/form/identity/identity.wxss */
+
+.button-list {
+  margin-top: 30rpx;
+}
+
+.button-list-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  line-height: 80rpx;
+}
+
+.button-list-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.button-list-item button{
+  width: 80%;
+  padding:0 0.5em;
+}

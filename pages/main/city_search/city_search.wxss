@@ -1,0 +1,53 @@
+/* city_search.wxss */
+.search-bar{
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+
+.city-page {
+  padding: 0 20rpx;
+  padding-top: 49px;
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+
+.hot-city,.city-list {
+   margin: 30rpx 0;
+   padding-top: 30rpx;
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.city-list-title {
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+
+.city-item {
+  float: left;
+  width: 33%;
+  text-align: center;
+  margin: 10rpx 0
+}
+ .city-item button{
+  margin: 0;
+  width: 80%;
+  box-sizing: border-box;
+} 
+
+
+.search-result {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 48px;
+  z-index: 2;
+  background-color: #f8f8f8;
+}
+
+.searchbar-result-cells {
+  margin-top: 0;
+}

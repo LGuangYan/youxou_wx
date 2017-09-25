@@ -1,0 +1,5 @@
+/* feedback_form.wxss */
+
+.weui-cells {
+  margin-top: 40rpx;
+}

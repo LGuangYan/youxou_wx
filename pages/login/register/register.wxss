@@ -1,0 +1,9 @@
+/* register.wxss */
+.cannot-getcode {
+  color: #8492A6
+}
+
+.logo image {
+  height: 300rpx;
+  width: 300rpx;
+}

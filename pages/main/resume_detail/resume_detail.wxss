@@ -1,0 +1,185 @@
+/* resume_detail.wxss */
+
+.info-header {
+  text-align: center;
+  height: 450rpx;
+  padding: 40rpx 0;
+  background-color: #fff;
+}
+
+.header-name {
+  position: absolute;
+  width: 100%;
+  top: 260rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.header-base-info {
+  position: relative;
+  top: 270rpx;
+  text-align: center;
+}
+
+.header-base-info .base-info-item {
+  display: inline-block;
+  color: #bbb;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+
+.header-base-info .base-info-icon {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
+.header-base-info .base-info-icon image {
+  margin-bottom: -2px;
+  margin-left: -5px;
+  width: 100%;
+  height: 100%;
+}
+
+.header-base-count {
+  position: absolute;
+  top: 390rpx;
+  width: 100%;
+  border-top: 1px solid #edebeb;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.header-base-count .base-count-item {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  border-right: 1px solid #edebeb;
+  padding: 10rpx 0;
+}
+
+.header-base-count .base-count-item:last-child {
+  border-right: none;
+}
+
+.base-count-item .base-count-title {
+  font-size: 24rpx;
+  line-height: 60rpx;
+  color: #bbb;
+}
+
+.base-count-item .base-count-content {
+  font-size: 28rpx;
+}
+
+.avatar {
+  position: absolute;
+  height: 200rpx;
+  width: 200rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.avatar-circle {
+  position: relative;
+  background-color: #d6d4d4;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.avatar-circle image {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-sex {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 50%;
+  padding: 10rpx;
+}
+
+.avatar-sex image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.exp-content {
+  color: #000;
+}
+
+.intent-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: -5px;
+  margin-right: 5px;
+}
+
+.intent-item {
+  font-size: 28rpx;
+}
+
+.resume-cells__title {
+  margin-bottom: 0;
+  line-height:2.5em;
+  color: #FF9800;
+  background-color: #fff;
+}
+
+.resume-introduction {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 20rpx 30rpx 6rpx;
+}
+
+.resume-introduction .job-status {
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.introduction-down image,
+.introduction-up image {
+  height: 40rpx;
+  width: 40rpx;
+  display: block;
+  margin: 0 auto
+}
+
+.resume-introduction .introduction-content {
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: #808080;
+  height: 68rpx;
+  min-height: 68rpx;
+  overflow: hidden;
+}
+
+.job-list {
+  position: absolute;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.hidden-page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.exp-tips, .edu-tips {
+  padding:30rpx;
+  font-size:28rpx;
+  color:#666;
+}

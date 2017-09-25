@@ -1,0 +1,175 @@
+/* candidate_list.wxss */
+
+.loading {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-top: 1rpx solid #e5e5e5;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.distance {
+  text-align: right;
+  color: #000;
+  font-size: 26rpx;
+}
+
+.salary {
+  text-align: right;
+  margin-top: 20px;
+  color: #ff9800;
+  font-size: 32rpx;
+}
+
+.list-tags {
+  margin-top: 2px;
+}
+
+.list-tag {
+  margin-right: 5px;
+  background-color: #EDEBEB;
+  color: #666;
+  display: inline-block;
+  padding: 3px;
+}
+
+.list-intent-job {
+  margin-top: 5px;
+}
+
+.searchbar-result {
+  margin-top: 0;
+  font-size: 14px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 300;
+}
+
+.searchbar-result:before {
+  display: none;
+}
+
+.weui-cell {
+  padding: 12px 15px 12px 35px;
+}
+
+.search {
+  position: absolute;
+  width: 100%;
+}
+
+.list {
+  padding-top: 88px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.search-bar {
+  z-index: 999;
+}
+
+.tips {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.search-page {
+  box-sizing: border-box;
+  z-index: 998;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 30rpx;
+  padding-top: 60px;
+}
+
+ .city-picker button {
+  margin: 0 4px 0 0;
+  display: block;
+} 
+
+.search-page .hot-job-title {
+  font-size: 34rpx;
+}
+
+.search-page .hot-job-list {
+  padding-top: 20rpx;
+}
+
+.search-page .hot-job-list .hot-job-item {
+  float: left;
+  margin: 10rpx 0
+}
+
+.search-page .hot-job-list button {
+  margin: 0 10rpx;
+}
+
+.filter-picker {
+  top: 41px;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.filter-active-option {
+  color: #ff9800;
+}
+
+.filter-radio {
+  width: 15px;
+  height: 15px;
+}
+
+.arrow-down {
+  display: inline-block;
+  border: 5px solid transparent;
+  border-top-color: #000;
+  margin-bottom: -3px;
+  width: 0px;
+  height: 0px;
+}
+
+.arrow-down.active {
+  border: 5px solid transparent;
+  border-bottom-color: #ff9800;
+  margin-bottom: 3px;
+}
+
+.list-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.list-sex {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 50%;
+  padding: 10rpx;
+}
+
+.list-sex image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.candidate-list {
+  background-color: #fff;
+}

@@ -1,0 +1,62 @@
+<!--auth.wxml-->
+<view class="page">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{warn}}">{{warn}}</view>
+  <view class="tips">
+    <view class="tips-title">认证说明</view>
+    <view class="tips-item">1、送免费上架条数</view>
+    <view class="tips-item">2、送免费发布条数</view>
+    <view class="tips-item">3、增加专属标识</view>
+  </view>
+
+  <view class="auth-item">
+    <view class="auth-item-hd">
+      <view class="auth-image face-icon">
+        <image src='/assets/ui/auth1.png'></image>
+      </view>
+      <view class="auth-item-title">人脸认证</view>
+      <view class="auth-item-button" wx:if="{{status.faceStatus.code == 0}}" bindtap="bindFaceAuthTap">去认证</view>
+      <view class="auth-item-button" wx:if="{{status.faceStatus.code != 0}}" style="background-color:{{status.faceStatus.color}}">{{status.faceStatus.text}}</view>
+    </view>
+    <view class="auth-item-ft clearfix">
+      <view class="auth-welfare-item">积分+5</view>
+      <view class="auth-welfare-item">免费发布+10</view>
+      <view class="auth-welfare-item">免费上架+5</view>
+      <view class="auth-welfare-item"></view>
+    </view>
+  </view>
+
+  <view class="auth-item">
+    <view class="auth-item-hd">
+      <view class="auth-image licence-icon">
+        <image src='/assets/ui/auth2.png'></image>
+      </view>
+      <view class="auth-item-title">营业执照认证</view>
+      <navigator open-type="navigateTo" wx:if="{{status.licenceStatus.code == 0}}" url="/pages/me/auth_licence/auth_licence" class="auth-item-button">去认证</navigator>
+      <view class="auth-item-button" wx:if="{{status.licenceStatus.code != 0}}" style="background-color:{{status.licenceStatus.color}}">{{status.licenceStatus.text}}</view>
+    </view>
+    <view class="auth-item-ft clearfix">
+      <view class="auth-welfare-item">积分+5</view>
+      <view class="auth-welfare-item">免费发布+10</view>
+      <view class="auth-welfare-item">免费上架+5</view>
+      <view class="auth-welfare-item"></view>
+    </view>
+  </view>
+
+  <view class="auth-item">
+    <view class="auth-item-hd">
+      <view class="auth-image legal-icon">
+        <image src='/assets/ui/auth3.png'></image>
+      </view>
+      <view class="auth-item-title">法人身份证认证</view>
+      <navigator open-type="navigateTo" wx:if="{{status.certifyStatus.code == 0}}" url="/pages/me/auth_legal/auth_legal" class="auth-item-button">去认证</navigator>
+      <view class="auth-item-button" wx:if="{{status.certifyStatus.code != 0}}" style="background-color:{{status.certifyStatus.color}}">{{status.certifyStatus.text}}</view>
+    </view>
+    <view class="auth-item-ft clearfix">
+      <view class="auth-welfare-item">积分+5</view>
+      <view class="auth-welfare-item">免费发布+10</view>
+      <view class="auth-welfare-item">免费上架+5</view>
+      <view class="auth-welfare-item"></view>
+    </view>
+  </view>
+
+</view>

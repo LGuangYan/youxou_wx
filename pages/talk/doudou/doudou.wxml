@@ -1,0 +1,42 @@
+<!--doudou.wxml-->
+<!-- 聊天页 -->
+<scroll-view  bindscrolltoupper="getOldChat" bindtap="bindContentScrollTap" scroll-y class="content" style="padding-bottom:{{quickMessageShowed?contentPaddingBottom:' '}}" scroll-into-view="{{mark}}">
+  <view class="message-list">
+
+
+    <view wx:for="{{chatList}}" wx:key="{{index}}" class="message-item message-item-{{item.send_id==1?'left':'right'}}">
+      <view class="message-avatar">
+        <image  mode='aspectFill'  src="{{item.send_id==1? '/assets/logo/小助手头像.png' :(item.sender_header_url||'/assets/default/头像.png')}}"></image>
+      </view>
+      <view class="message-content">
+        <text class="message-arrow"></text>
+        <text class="message-text">{{item.chat_content}}</text>
+        <!-- <view class="is-read">已读</view> -->
+      </view>
+      <!-- <view class="message-time">8月13日 14：53</view> -->
+    </view>
+
+    <!-- <view wx:for="{{[1,1,1,1,1,1,1,1]}}" class="message-item message-item-right">
+      <view class="message-avatar">
+        <image src="/assets/default/头像.png"></image>
+      </view>
+      <view class="message-content">
+        <text class="message-arrow"></text>
+        <text class="message-text">hahahahahahahahah</text>
+        <view class="is-read" style="background-color:{{item == 1 ? '#8BC34A' : '#E51C23'}}">{{item == 1 ? '已读' : '未读'}}</view>
+      </view>
+      <view class="message-time">8月15日 14：53</view>
+    </view> -->
+  </view>
+  <view class="bottom-mark-top"></view>
+  <view id="mark" class="bottom-mark"></view>
+</scroll-view>
+
+<view class="bottom-box">
+  <view class="message-input" style="padding-right:10rpx">
+    <input cursor-spacing="10" type="text" value="{{inputValue}}" confirm-type="发送" bindconfirm="sendMessage" confirm-hold="true" />
+    <!-- <view class="quick-message" bindtap="showQuickMessage">
+      <image src="/assets/ui/{{quickMessageShowed ? 'keyboard' : 'option' }}.png"></image>
+    </view> -->
+  </view>
+</view>

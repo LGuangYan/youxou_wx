@@ -1,0 +1,98 @@
+/* job_view.wxss */
+
+.company-image {
+  height: 290rpx;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+.company-image image {
+  width: 100%;
+}
+
+.info-hd {
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.info-hd .name {
+  font-size: 40rpx;
+  line-height: 60rpx;
+}
+
+.info-hd .salary {
+  font-size: 40rpx;
+  line-height: 60rpx;
+  color: #ff9800;
+}
+
+.info-bd {
+  padding: 0rpx 30rpx;
+}
+
+.info-bd .base-info {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20rpx 0;
+}
+
+.base-info image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom:-4rpx;
+  margin-right:8rpx;
+
+}
+
+.base-info .base-info-text {
+  font-size: 28rpx;
+  line-height: 20rpx;
+}
+
+.info-bd .welfare {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20rpx 0;
+}
+
+.welfare .welfare-title {
+  font-size: 32rpx;
+  line-height: 48rpx;
+}
+
+.welfare .welfare-list {
+  margin-top: 20rpx;
+}
+
+.welfare-list .welfare-item {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  float: left;
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+  background-color: #ff9800;
+  border-radius: 6rpx;
+  color: #fff;
+  padding: 4rpx 10rpx;
+}
+
+.info-bd .intro {
+  padding: 20rpx 0;
+}
+
+.intro .intro-title {
+  color: #000;
+  font-size: 32rpx;
+  line-height: 48rpx;
+}
+
+.intro .intro-content {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  color: #666;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.button-box {
+  padding-bottom: 20rpx;
+}

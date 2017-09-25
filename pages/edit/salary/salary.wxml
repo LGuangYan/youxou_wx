@@ -1,0 +1,23 @@
+<!--salary.wxml-->
+<!-- <view class="weui-cells__title">职位信息</view> -->
+<view class="weui-toptips weui-toptips_warn" wx:if="{{warn}}">{{warn}}</view>
+<view class="salary-cells ">
+  <view class="weui-cells weui-cells_after-title ">
+    <view class="weui-cell weui-cell_select  {{warn.treatment ? 'weui-cell_warn' : ''}}">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">薪　　资</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input disabled="{{salaryChecked}}" value="{{min_salary}}" type="number" bindinput="minSalaryInput" class="salary-input" type="text" /> - <input disabled="{{salaryChecked}}" value="{{max_salary}}" type="number" bindinput="maxSalaryInput" class="salary-input"
+          type="text" />
+        <text> (元)</text>
+        <view class="salary-checkbox" bindtap="chengeSalaryChecked">
+          <image src="{{salaryChecked ? '/assets/ui/radio.png' : '/assets/ui/radio_g.png'}}"></image>
+          <text style="color: {{salaryChecked ? '#FF9800' : '#666'}}">面议</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<button class="weui-btn mgb20" bindtap="submit" type="primary">提交</button>

@@ -1,0 +1,9 @@
+<!--about_youdou.wxml-->
+<view class="page">
+
+<view class="logo">
+  <image src='/assets/logo/150.png'></image>
+</view>
+<view class="version mgt20">v1.0.0版本</view>
+
+</view>

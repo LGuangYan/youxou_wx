@@ -1,0 +1,17 @@
+/* login.wxss */
+
+.more {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #1D8CE0;
+}
+input.abc{
+  font-size: 32rpx;
+  line-height: 64rpx;
+}
+
+.logo image {
+  height: 300rpx;
+  width: 300rpx;
+}

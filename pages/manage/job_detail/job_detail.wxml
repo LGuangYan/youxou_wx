@@ -1,0 +1,56 @@
+<!--job_detail.wxml-->
+<!--create_job.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">{{info.job_name}}</view>
+    <view class="page__desc">投递数 {{deliver}}</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-cells__title">职位信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/edit/radio/radio?type=job&param=job_type&name=职位类型&value={{info.job_type}}&job_id={{job_id}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">职位类型</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{info.job_type}}</view>
+      </navigator>
+      <navigator url="/pages/edit/category/category?type=job&param=category&name=职位类别&value={{info.category}}&job_id={{job_id}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">职位类别</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{info.category}}</view>
+      </navigator>
+      <navigator url="/pages/edit/input/input?inputType=number&type=job&param=number&name=招聘人数&value={{info.number}}&job_id={{job_id}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">招聘人数</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{info.number==0?'不限':info.number+'人'}}</view>
+      </navigator>
+      <navigator url="/pages/edit/salary/salary?type=job&param=treatment&name=薪资&min_salary={{info.min_salary}}&max_salary={{info.max_salary}}&job_id={{job_id}}&salaryChecked={{info.min_salary == 0 && info.max_salary == 0 ? 1 : 0}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">薪资</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" wx:if="{{info.min_salary != 0 || info.max_salary != 0}}">{{info.min_salary}}-{{info.max_salary}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" wx:if="{{info.min_salary == 0 && info.max_salary == 0}}">面议</view>
+      </navigator>
+      <!-- <navigator url="/pages/edit/radio/radio?type=job&param=sex&name=性别要求&value={{info.sex}}&job_id={{job_id}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">性别要求</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{info.sex}}</view>
+      </navigator> -->
+      <navigator url="/pages/edit/radio/radio?type=job&param=experience&name=工作经验&value={{info.experience}}&job_id={{job_id}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">工作经验</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{info.experience}}</view>
+      </navigator>
+      <navigator url="/pages/edit/radio/radio?type=job&param=education&name=学历要求&value={{info.education}}&job_id={{job_id}}" class="weui-cell weui-cell_access" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">学历要求</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{info.education}}</view>
+      </navigator>
+      <navigator url="/pages/edit/address/address?type=job&param=address&value={{info.address}}&name=工作地址&job_id={{job_id}}" class="weui-media-box weui-media-box_text" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class=" weui-cell__ft_in-access">
+          <view class="weui-media-box__title weui-media-box__title_in-text">工作地址</view>
+          <view class="weui-media-box__desc ">{{info.address}}</view>
+        </view>
+      </navigator>
+
+      <navigator url="/pages/edit/textarea/textarea?type=job&param=job_desc&name=职位描述&value={{info.job_desc}}&job_id={{job_id}}" class="weui-media-box weui-media-box_text" open-type="navigateTo" hover-class="weui-cell_active">
+        <view class=" weui-cell__ft_in-access">
+          <view class="weui-media-box__title weui-media-box__title_in-text">职位描述</view>
+          <view class="weui-media-box__desc ">{{info.job_desc}}</view>
+        </view>
+      </navigator>
+
+    </view>
+  </view>
+</view>

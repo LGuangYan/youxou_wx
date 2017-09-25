@@ -1,0 +1,4 @@
+/* auth_legal.wxss */
+image {
+  width: 250rpx;
+}

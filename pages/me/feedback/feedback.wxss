@@ -1,0 +1,41 @@
+/* feedback.wxss */
+.page {
+  height: 100%;
+  position: relative;
+}
+.service {
+  height: 100rpx;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  padding: 20rpx 0;
+  background-color: #fff;
+  color: #ff9800;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.service .service-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.service .service-online {
+  border-right: 1px solid #dedede
+}
+
+.service .service-item image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: -10rpx;
+  margin-right: 10rpx;
+}
+
+.bottom-button {
+  position: absolute;
+  bottom: 30rpx;
+  width: 100%;
+}
