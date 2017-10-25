@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isBack:false,
+
     loading: false,
     currentPage: 0,
     maxPage: 0,
