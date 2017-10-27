@@ -6,7 +6,7 @@
       <view class="weui-label">{{name}}</view>
     </view> -->
     <view class="weui-cell__bd">
-      <textarea class="weui-textarea"  bindinput="inputChange" value="{{value}}"  placeholder="请输入{{name}}" auto-height style="min-height: 6em" />
+      <textarea class="weui-textarea" maxlength="-1"  bindinput="inputChange" value="{{value}}"  placeholder="请输入{{name}}" auto-height style="min-height: 6em" />
     </view>
   </view>
 </view>

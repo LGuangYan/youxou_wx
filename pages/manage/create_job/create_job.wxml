@@ -152,7 +152,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" bindinput="jobDescInputBlur" bindblur="jobDescInputBlur" placeholder="请输入职位描述" style="height: 3.3em" />
+          <textarea class="weui-textarea" bindinput="jobDescInputBlur" maxlength="-1" bindblur="jobDescInputBlur" placeholder="请输入职位描述" style="height: 3.3em" />
         </view>
         <view class="weui-cell__ft">
           <icon wx:if="{{warn.job_desc}}" bindtap="getErrorInfo" data-warn="code" type="warn" size="23" color="#E64340"></icon>
