@@ -99,7 +99,7 @@ App({
     detail:null
   },
   id:'',
-  API_ROOT: 'http://192.168.3.48/?r=',  
+  API_ROOT: 'http://192.168.199.191/?r=',  
   // API_ROOT: 'http://192.168.3.106/?r=',
   // API_ROOT: 'http://192.168.3.44/?r=',
   // API_ROOT: 'https://youdou.taorenke.com/?r=',
