@@ -1,0 +1,5 @@
+/* pages/me/qrlogin/qrlogin.wxss */
+.tips {
+  text-align: center;
+  line-height: 400px;
+}

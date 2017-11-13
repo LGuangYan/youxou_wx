@@ -48,7 +48,8 @@
     "pages/me/auth_legal/auth_legal",
     "pages/me/article/article",
     "pages/form/textarea/textarea",
-    "pages/form/identity/identity"
+    "pages/form/identity/identity",
+    "pages/me/qrlogin/qrlogin"
   ],
   "window": {
     "backgroundTextStyle": "light",

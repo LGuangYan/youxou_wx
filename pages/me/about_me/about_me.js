@@ -34,6 +34,19 @@ Page({
   },
 
   /**
+   * 扫一扫
+   */
+  scanCode: function(){
+    wx.scanCode({
+      success:function(code){
+        if (!/^youdou_/.test(code.result)) return
+        wx.navigateTo({
+          url: '/pages/me/qrlogin/qrlogin?code=' + code.result,
+        })
+      }
+    })
+  },
+  /**
    * 显示设置
    */
   showOption: function(){

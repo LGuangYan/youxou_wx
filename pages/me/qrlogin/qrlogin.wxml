@@ -1,0 +1,4 @@
+<!--pages/me/qrlogin/qrlogin.wxml-->
+<view class='tips'>是否允许在PC端登陆该账号？</view>
+<button class='submit-button' bindtap='qrlogin' type='primary'>允许</button>
+<button class='mgt20' bindtap='refuseLogin'>拒绝</button>
