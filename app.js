@@ -99,11 +99,11 @@ App({
     detail:null
   },
   id:'',
-  API_ROOT: 'http://192.168.199.191/?r=',  
+  // API_ROOT: 'http://192.168.199.191/?r=',  
   // API_ROOT: 'http://192.168.3.106/?r=',
   // API_ROOT: 'http://192.168.3.44/?r=',
   // API_ROOT: 'https://youdou.taorenke.com/?r=',
-  // API_ROOT: 'https://demo.taorenke.com/?r=',
+  API_ROOT: 'https://demo.taorenke.com/?r=',
   // IMG_ROOT: 'http://192.168.3.48/elephant_recruitment_php/backend/web/',
   // IMG_ROOT:'https://demo.taorenke.com/',
   token:'',
