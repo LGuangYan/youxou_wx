@@ -62,6 +62,7 @@ Page({
       [this.data.param]: e.currentTarget.dataset.city,
       [this.data.param + 'Index']: e.currentTarget.dataset.idx
     })
+    prevPage.getNewList()
     wx.navigateBack()
   },
 

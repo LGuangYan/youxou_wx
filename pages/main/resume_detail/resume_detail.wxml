@@ -8,7 +8,7 @@
         <!-- <image src="{{info.resume.header_url ? info.resume.header_url : '/assets/default/头像.png'}}" mode="aspectFill" /> -->
       </view>
       <view class="avatar-sex" style="border-color:{{info.resume.sex == '女'?'#ff69b1':'049aa9'}}">
-        <image wx:if="{{info.resume.sex}}" src="/assets/sex/{{info.resume.sex}}.png" mode="scaleToFill" />
+        <image wx:if="{{info.resume.sex}}" src="/assets/sex/{{item.sex == '女'? 'woman' : 'man'}}.png" mode="scaleToFill" />
       </view>
     </view>
     <!-- 姓名 -->

@@ -100,7 +100,7 @@
             <image class="weui-media-box__thumb" src="{{item.header_url ? item.header_url : '/assets/default/头像.png'}}" />
           </view>
       <view class="list-sex" style="border-color:{{item.sex == '女'?'#ff69b1':'049aa9'}}">
-        <image wx:if="{{item.sex}}" src="/assets/sex/{{item.sex}}.png" mode="scaleToFill" />
+        <image wx:if="{{item.sex}}" src="/assets/sex/{{item.sex == '女'? 'woman' : 'man'}}.png" mode="scaleToFill" />
       </view>
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">

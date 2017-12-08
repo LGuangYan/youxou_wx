@@ -6,7 +6,7 @@
 
     <view wx:for="{{chatList}}" wx:key="{{index}}" class="message-item message-item-{{item.send_id==1?'left':'right'}}">
       <view class="message-avatar">
-        <image  mode='aspectFill'  src="{{item.send_id==1? '/assets/logo/小助手头像.png' :(item.sender_header_url||'/assets/default/头像.png')}}"></image>
+        <image  mode='aspectFill'  src="{{item.send_id==1? '/assets/logo/doudouavatar.png' :(item.sender_header_url||'/assets/default/头像.png')}}"></image>
       </view>
       <view class="message-content">
         <text class="message-arrow"></text>

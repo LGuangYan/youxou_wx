@@ -147,7 +147,7 @@ Page({
 
   hotJobTap: function (e) {
     this.setData({
-      inputVal: e.currentTarget.dataset.job,
+      inputVal: e.currentTarget.dataset.job[0],
       searchPageShowed: false,
       inputShowed: true
     });

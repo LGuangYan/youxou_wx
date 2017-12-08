@@ -3,7 +3,7 @@
 <view class="talk-top">
   <navigator url="/pages/talk/doudou/doudou?theme_id={{doudou.theme_id}}" open-type="navigateTo" class="weui-media-box weui-media-box_appmsg top-item" hover-class="weui-cell_active">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg avatar">
-      <image class="weui-media-box__thumb" src="/assets/logo/小助手头像.png" />
+      <image class="weui-media-box__thumb" src="/assets/logo/doudouavatar.png" />
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
       <view class="weui-media-box__title">有豆小助手</view>
