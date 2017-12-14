@@ -58,7 +58,8 @@ Page({
       traffic: '',
       introduction: '',
       address: '',
-      welfare: ''
+      welfare: '',
+      logo:''
     }
   },
 
@@ -429,7 +430,8 @@ Page({
           success: function (res) {
             console.log('uploadLogo', res)
             that.setData({
-              'form.logo': JSON.parse(res.data).data[0].imgId
+              'form.logo': JSON.parse(res.data).data[0].imgId,
+              'warn.logo': ''
             })
           },
           fail: function(res){
@@ -601,7 +603,15 @@ Page({
         'warn.introduction': ''
       })
     }
-
+    if (!this.data.form.logo) {
+      return this.setData({
+        'warn.logo': '请上传公司logo'
+      })
+    } else {
+      this.setData({
+        'warn.logo': ''
+      })
+    }
     if (this.data.form.welfare.length < 1){
       return this.setData({
         'warn.welfare': '请选择公司福利'
