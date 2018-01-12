@@ -16,7 +16,7 @@
       {{info.resume.name}}
     </view>
     <!-- 基本信息 -->
-    <view class="header-base-info">
+    <view wx:if="{{info.resume.source == 'app'}}" class="header-base-info">
       <view class="base-info-item">
         <view class="base-info-icon">
           <image src="/assets/ui/gps.png"></image>
@@ -62,7 +62,7 @@
   <!-- 详细信息 -->
   <view class="page__bd">
     <!-- 自我总结 -->
-    <view class="resume-introduction">
+    <view wx:if="{{info.resume.source == 'app'}}" class="resume-introduction">
       <view class="job-status">{{info.resume.job_status}}</view>
       <view class="introduction-content" style="height:{{introDetailShowed?'auto':''}}">
         {{info.resume.self_desc||'暂未填写'}}
@@ -75,8 +75,8 @@
       </view>
     </view>
 
-    <view class="weui-cells__title resume-cells__title">求职意向</view>
-    <view class="weui-cells weui-cells_after-title">
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells__title resume-cells__title">求职意向</view>
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd intent-item">
           <image src="/assets/ui/gps_g.png" class="intent-icon"></image>
@@ -97,8 +97,8 @@
       </view>
     </view>
 
-    <view class="weui-cells__title resume-cells__title">工作经验</view>
-    <view class="weui-cells weui-cells_after-title">
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells__title resume-cells__title">工作经验</view>
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells weui-cells_after-title">
       <view class="weui-panel__bd">
         <view wx:if="{{!info.experience.length}}" class="exp-tips">暂未填写</view>
         <view wx:for="{{info.experience}}" wx:key="{{index}}" class="weui-media-box weui-media-box_text">
@@ -117,8 +117,8 @@
       </view>
     </view>
 
-    <view class="weui-cells__title resume-cells__title">教育经历</view>
-    <view class="weui-cells weui-cells_after-title">
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells__title resume-cells__title">教育经历</view>
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells weui-cells_after-title">
       <view class="weui-panel__bd">
       <view wx:if="{{!info.education.length}}" class="edu-tips">暂未填写</view>
         <view wx:for="{{info.education}}" wx:key="{{index}}" class="weui-media-box weui-media-box_text">
@@ -132,10 +132,85 @@
         </view>
       </view>
     </view>
+
+    <!-- 非app -->
+
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/gps_g.png" class="intent-icon"></image>
+          {{info.resume.intent_address||'未知'}}
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/exp_g.png" class="intent-icon"></image>
+          {{info.resume.job_age+'年'||'未知'}}
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/edu_g.png" class="intent-icon"></image>
+          {{info.resume.education||'未知'}}
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          <image src="/assets/ui/peple_g.png" class="intent-icon"></image>
+          {{info.resume.age+'岁'||'未知'}}
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">期望职位</view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          {{info.resume.intent_job||'未知'}}
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">期望薪资</view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          {{info.resume.intent_salary||'未知'}}
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">毕业学校</view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          {{info.resume.school||'未知'}}
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">专业</view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          {{info.resume.professional||'未知'}}
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">现在单位</view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd intent-item">
+          {{info.resume.current_unit||'未知'}}
+        </view>
+      </view>
+    </view>
+
     <view class="tac mgt20" style="color:red;font-size:14px;" wx:if="{{errorTips}}">{{errorTips}}</view>
     <button bindtap="showJobList" class="weui-btn mgb20" type="primary">邀约面试</button>
     <view class='global-bottom-box'></view>
   </view>
+
+
+
 
   <!-- 职位选择 -->
   <scroll-view wx:if="{{jobListShow}}" class="job-list">

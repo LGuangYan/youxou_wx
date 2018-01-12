@@ -183,3 +183,9 @@
   font-size:28rpx;
   color:#666;
 }
+
+.weui-cells__title2 {
+  padding-left:15px;
+  padding-right:15px;
+  font-size:14px;
+}
