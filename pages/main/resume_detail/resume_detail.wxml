@@ -97,7 +97,9 @@
       </view>
     </view>
 
-    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells__title resume-cells__title">工作经验</view>
+    <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells__title resume-cells__title">
+    工作经验
+    </view>
     <view wx:if="{{info.resume.source == 'app'}}" class="weui-cells weui-cells_after-title">
       <view class="weui-panel__bd">
         <view wx:if="{{!info.experience.length}}" class="exp-tips">暂未填写</view>
@@ -162,42 +164,58 @@
       </view>
     </view>
 
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">期望职位</view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">
+    
+      <image src="/assets/ui/arrow_right.png" class="intent-icon"></image>
+      在找职位
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells-sp weui-cells_after-title">
+      <view class="weui-cell weui-cell-noapp">
         <view class="weui-cell__bd intent-item">
           {{info.resume.intent_job||'未知'}}
         </view>
       </view>
     </view>
 
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">期望薪资</view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__bd intent-item">
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">
+    <image src="/assets/ui/arrow_right.png" class="intent-icon"></image>
+    期望薪资
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells-sp weui-cells_after-title">
+      <view class="weui-cell weui-cell-noapp">
+        <view class="weui-cell__bd  intent-item">
           {{info.resume.intent_salary||'未知'}}
         </view>
       </view>
     </view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">毕业学校</view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">
+    <image src="/assets/ui/arrow_right.png" class="intent-icon"></image>
+    毕业学校
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells-sp weui-cells_after-title">
+      <view class="weui-cell  weui-cell-noapp">
         <view class="weui-cell__bd intent-item">
           {{info.resume.school||'未知'}}
         </view>
       </view>
     </view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">专业</view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">
+    <image src="/assets/ui/arrow_right.png" class="intent-icon"></image>
+    专业
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells-sp weui-cells_after-title">
+      <view class="weui-cell  weui-cell-noapp">
         <view class="weui-cell__bd intent-item">
           {{info.resume.professional||'未知'}}
         </view>
       </view>
     </view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">现在单位</view>
-    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells__title2 resume-cells__title">
+    <image src="/assets/ui/arrow_right.png" class="intent-icon"></image>
+    现在单位
+    </view>
+    <view wx:if="{{info.resume.source != 'app'}}" class="weui-cells weui-cells-sp weui-cells_after-title">
+      <view class="weui-cell weui-cell-noapp">
         <view class="weui-cell__bd intent-item">
           {{info.resume.current_unit||'未知'}}
         </view>
