@@ -1,0 +1,55 @@
+<!--pages/form/job_info/job_info.wxml-->
+<view class='page'>
+  <view class="page__bd">
+    <view class="type-buttons">
+      <view class="type-item {{activeType == 'default' ? 'active' : ''}}" data-type="default" bindtap="bindTypeTap" hover-class="hover-default">预设</view>
+      <view class="type-item {{activeType == 'custom' ? 'active' : ''}}" data-type="custom" bindtap="bindTypeTap" hover-class="hover-cancel">自定义</view>
+    </view>
+
+    <view class="weui-cells__title">职位信息</view>
+    <!-- 预设 -->
+    <view wx:if="{{activeType == 'default'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd  weui-cell__hd_in-select-after">
+          <view class="weui-label">新项名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="nameChange" value="{{nameIndex}}" range="{{defaultList}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{defaultContent.name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">内容</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindinput="defaultContentInput" class="weui-input" placeholder="{{currentPlacehoder}}" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 自定义 -->
+    <view wx:if="{{activeType == 'custom'}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">新项名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindinput="customNameInput" class="weui-input" placeholder="请输入新项名" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">内容</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input bindinput="customContentInput" class="weui-input" placeholder="请输入内容" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn mgb20" type="primary" bindtap="submit">提交</button>
+    </view>
+  </view>
+</view>

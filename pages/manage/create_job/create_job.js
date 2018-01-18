@@ -37,8 +37,8 @@ Page({
       job_label: '',
       job_type: 0,
       address: '',
-      category: ''
-
+      category: '',
+      job_info:[]
     },
     topTips:'',
     warn: {
@@ -109,72 +109,12 @@ Page({
    */
   categoryChange: function (e) {
     let index = e.detail.value
-    console.log(index)
     this.setData({
       categoryName: this.data.categoryList[2][index[2]].name,
       'form.category': this.data.categoryList[1][this.data.categoryIndex[1]].value,
     })
-
-    // console.log(this.data.categoryName)
-    // let val = this.data.jobTypeIndex
-    // if (val == 0) {
-    //   this.setData({
-    //     topTips: '',
-    //     'warn.job_type': '请选择岗位类型'
-    //   })
-    //   return false
-    // }
-    // this.setData({
-    //   'warn.job_type': '',
-    // })
   },
 
-  /**
-   * 职位类别单行变化
-   */
-  // categoryColumnChange: function (e) {
-  //   let data = app.jobRadio.category
-  //   let column = e.detail.column
-  //   let value = e.detail.value
-  //   let categoryList = this.data.categoryList
-  //   let indexList = this.data.categoryIndex
-  //   switch (column) {
-  //     case 0:
-  //       if(value == 0){
-
-  //         return this.setData({
-  //           categoryList: [categoryList[0], [{ value: 0, name: '' }], [{ value: 0, name: '' }]]
-  //         })
-  //       }
-  //       let arr1 = []
-  //       indexList[0] = categoryList[0][value].index
-  //       data[indexList[0]].child.forEach((item,index) => {
-  //         arr1.push({
-  //           name:item.name,
-  //           value:item.value,
-  //           index:index
-  //         })
-  //         categoryList[1] = arr1
-
-  //       })
-  //       break;
-  //     case 1:
-  //       let arr2 = []
-  //       indexList[1] = categoryList[1][value].index
-  //       data[indexList[0]].child[indexList[1]].sub.forEach(item => {
-  //         arr2.push(item)
-  //       })
-  //       categoryList[2] = arr2
-
-  //       break;
-  //   }
-  //   this.setData({
-  //     'categoryList': categoryList,
-  //     'categoryIndex': indexList,
-  //     'warn.category': ''
-  //   })
-
-  // },
 
   /**
    * 性别要求
@@ -188,17 +128,6 @@ Page({
         //!!
       })
     }
-    // let val = this.data.sexIndex
-    // if (val == 0) {
-    //   this.setData({
-    //     topTips: '',
-    //     'warn.sex': '请选择岗位类型'
-    //   })
-    //   return false
-    // }
-    // this.setData({
-    //   'warn.sex': '',
-    // })
     return true
   },
 
@@ -219,16 +148,6 @@ Page({
   /**
    * 薪资福利
    */
-  // treatmentChange: function (e) {
-  //   if (e) {
-  //     this.setData({
-  //       treatmentIndex: e.detail.value,
-  //       'form.treatment': this.data.treatmentList[e.detail.value].value
-  //     })
-  //   }
-  //   return true
-  // },
-
   minSalaryInput: function(e){
     this.setData({
       'min_salary': e.detail.value,
@@ -319,11 +238,24 @@ Page({
       }
     })
   },
-  /**
-   * 岗位标签
-   */
-  jobLabelInputBlur: function (e) {
 
+  /**
+   * 长按删除公司信息
+   */
+  deleteInfoItem: function(e){
+    let self = this
+    wx.showActionSheet({
+      itemList: ['删除'],
+      success: function (res) {
+        if (res.tapIndex == 0){
+          let info = self.data.form.job_info
+          info.splice(e.currentTarget.dataset.idx,1)
+          self.setData({
+            'form.job_info': info
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -363,8 +295,6 @@ Page({
         'warn.address': '请选择工作地址'
       })
     }
-
-    
     if (!this.data.form.job_desc) {
       return this.setData({
         'warn.job_desc': '请输入职位描述'
