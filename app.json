@@ -66,7 +66,7 @@
         "iconPath": "assets/tabaricon/附近_.png",
         "selectedIconPath": "assets/tabaricon/附近.png",
         "pagePath": "pages/main/candidate_list/candidate_list",
-        "text": "附近"
+        "text": "匹配"
       },
       {
         "iconPath": "assets/tabaricon/消息_.png",

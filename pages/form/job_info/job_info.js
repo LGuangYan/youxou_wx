@@ -50,7 +50,8 @@ Page({
       name:'',
       value:''
     },
-    result:[]
+    result:[],
+    editIndex:undefined
   },
 
   /**
@@ -107,7 +108,13 @@ Page({
     let item = this.data.activeType == 'default' ? this.data.defaultContent : this.data.customContent
     if (item.name && item.value){
       let result = this.data.result
-      result.push(item)
+
+      if (this.data.editIndex){
+        result[this.data.editIndex] = item
+      } else {
+        result.push(item)
+      }
+
       let pages = getCurrentPages()
       pages[pages.length - 2].setData({
         'form.job_info': result
@@ -120,7 +127,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let pages = getCurrentPages()
+    this.setData({
+      result: pages[pages.length - 2].data.form.job_info,
+      editIndex: options.idx
+    })
   },
 
   /**
@@ -134,10 +145,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let pages = getCurrentPages()
-    this.setData({
-      result: pages[pages.length - 2].data.form.job_info
-    })
+
   },
 
   /**

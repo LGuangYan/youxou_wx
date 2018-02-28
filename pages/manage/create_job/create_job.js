@@ -259,6 +259,15 @@ Page({
   },
 
   /**
+   * 编辑公司信息
+   */
+  editInfoItem: function(e){
+    wx.navigateTo({
+      url: '/pages/form/job_info/job_info?idx=' + e.currentTarget.dataset.idx,
+    })
+  },
+
+  /**
    * 职位描述
    */
   jobDescInputBlur: function (e) {
