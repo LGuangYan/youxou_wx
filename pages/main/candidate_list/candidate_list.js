@@ -298,9 +298,10 @@ Page({
               city: res.data.data.name,
               cityIndex: res.data.data.value,
             })
+            wx.hideLoading()
             callback && callback()
           },
-          complete: function () {
+          fail: function () {
             wx.hideLoading()
           }
         })
